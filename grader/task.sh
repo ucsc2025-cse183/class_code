@@ -5,7 +5,7 @@ docker stop $(docker ps -a  | grep selenium | awk '{print $1}')	|| true
 docker container prune --force || true
 echo '{"status": "failure"}' > task.output.json
 echo "cloning student repo..."
-git clone https://${github_credentials}@github.com/ucsc2024-cse183/$1-code.git > /dev/null
+git clone https://${github_credentials}@github.com/ucsc2025-cse183/$1-code.git > /dev/null
 path=`pwd`/$1-code/$2
 echo "print repos info..."
 find ./ -name ".git" -type d | sed "s,.git$,," | xargs -i sh -c 'cd {}; echo "{}:$(git config --get remote.origin.url)/commit/$(git rev-parse HEAD)"' | sed 's/\/\/.*@/\/\//' | sed 's/\.git//'
