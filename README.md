@@ -3,16 +3,16 @@
 ## Important Times and Dates
 
 - Meeting location: online (Zoom link will be provided)
-- Meeting days: Monday and Wednesday
+- Meeting days: Tuesdaay and Thursday
 - Meeting time: 7:10pm - 8:45pm
-- Instructor office hours: Monday and Wedensday 9-10pm (requires appoinment)
+- Instructor office hours: Tuesday and Thursday 9-10pm (requires appoinment)
 - TA office hours: (see canvas)
-- First day of class: April 1, 2024
-- Last day of class: June 5, 2024
+- First day of class: April 1, 2025
+- Last day of class: June 5, 2025
 
 ##  Important Links
-- Discussion group: https://groups.google.com/g/ucsc2024-cse183
-- Class code: https://github.com/ucsc2024-cse183/class_code
+- Discussion group: https://groups.google.com/g/ucsc2025-cse183
+- Class code: https://github.com/ucsc2025-cse183/class_code
 - Py4Web: https://py4web.com
 
 Work done in class will be commited under class_code/lectures
@@ -22,7 +22,7 @@ Assignments will be posted under class_core/assignments
 
 The first week is the most important week. Not only a lot of critical material will be covered.
 This is also the time when you will setup everything the class.
-- read the syllabus https://github.com/ucsc2024-cse183/class_code
+- read the syllabus https://github.com/ucsc2025-cse183/class_code
 - setup your Linux machine
 - upload your ssh key to github
 - fill the Google form questionaire from the instructor
@@ -31,7 +31,7 @@ This is also the time when you will setup everything the class.
 - test the `grade` script on the dummy assignment0
 
 ```
-git clone https://github.com/ucsc2024-cse183/class_code.git
+git clone https://github.com/ucsc2025-cse183/class_code.git
 cd class_code
 ./bootstrap-shell-cse183.sh
 ```
