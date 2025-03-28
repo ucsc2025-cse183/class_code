@@ -60,6 +60,7 @@ let
       pkgs.mc
       pkgs.git
       pkgs.nano
+      pkgs.qemacs
       pkgs.ungoogled-chromium
       vscodeWithExtensions
 
