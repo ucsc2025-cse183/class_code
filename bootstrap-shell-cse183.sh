@@ -82,18 +82,15 @@ let
       VENV_PATH=.venv
       # Augment the dynamic linker path
       export "LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${lib-path}"
-
       # Setup the virtual environment if it does not already exist.
       if test ! -d $VENV_PATH; then
         python -m venv $VENV_PATH
       fi      
-      if test -f requirements.txt; then
-        $VENV_PATH/bin/pip install -U -r requirements.txt
-      fi
       $VENV_PATH/bin/pip install -U py4web
       $VENV_PATH/bin/pip install -U requests
       $VENV_PATH/bin/pip install -U webdriver-manager
       source $VENV_PATH/bin/activate
+      export PS1="\e[30;48;5;214m\u@\h (CSE183) \w [\$(git branch -q --show-current 2>/dev/null)]\e[0m\n$ "
       export PYTHONPATH=$VENV_PATH/${myPython.sitePackages}/:${pythonWithPkgs}/${pythonWithPkgs.sitePackages}:$PYTHONPATH
       export EDITOR=nano
       export GIT_EDITOR=nano
