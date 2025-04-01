@@ -57,6 +57,9 @@ This class also requires familiarity with basic git commands (close, commit, pus
 - June 5 - Final project due
 - June 9 - Crowdgrader project review due
 
+IMPORTANT: The assignments that are posted are not final and can be revised by
+the instructor up to 2 weeks before they are due.
+
 ### Assignment submissions
 
 Assignments are to be submitted using the github created for you by the instructor.
