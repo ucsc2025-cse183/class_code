@@ -35,6 +35,6 @@
   - git diff # shows what differs from last snapshot
   - (git checkout {commit}) # goes to that commit/snapshot
   
-
+- python review https://raw.githubusercontent.com/mdipierro/nlib/master/docs/book_numerical.pdf pp.23-67
 
 
