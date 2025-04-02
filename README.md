@@ -170,6 +170,7 @@ Consequences: Any instance of plagiarism will be taken very seriously. Depending
 ## Reading Suggestions
 
 Week 1 - Suggested readings
+- https://raw.githubusercontent.com/mdipierro/nlib/master/docs/book_numerical.pdf (pp 24-70)
 - https://reintech.io/blog/how-to-create-a-simple-web-server-with-python
 - https://www.cloudflare.com/learning/network-layer/internet-protocol/
 - https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
