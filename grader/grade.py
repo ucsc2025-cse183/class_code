@@ -24,7 +24,7 @@ try:
 except:
     ChromeDriverManager = None
 
-__version__ = "20240420.1"
+__version__ = "20250403.1"
 
 
 def run(cmd):
@@ -128,7 +128,7 @@ def check_student_repo():
         )
         sys.exit(1)
     if not (
-        info and info["name"].endswith("-code") and info["org"] == "ucsc2024-cse183"
+        info and info["name"].endswith("-code") and info["org"] == "ucsc2025-cse183"
     ):
         print(
             colors.FAIL
