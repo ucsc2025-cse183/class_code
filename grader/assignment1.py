@@ -125,7 +125,7 @@ class Assignment(AssignmentBase):
         "the footer should contain a link to the class code"
         self.footer_links = self.children[3].findAll("a")
         success = any(
-            link["href"] == "https://github.com/ucsc2024-cse183/class_code"
+            link["href"] == "https://github.com/ucsc2025-cse183/class_code"
             for link in self.footer_links
         )
         self.add_comment(self.step11.__doc__, 1 if success else 0)
