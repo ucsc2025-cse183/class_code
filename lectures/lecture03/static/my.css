@@ -1,0 +1,6 @@
+div.my-title { text-align: left; padding: 10px; }
+div.my-column { width:20%; display:inline-block; }
+div.my-header { font-size:1.5em; color: blue; font-weight: bold}
+div.my-title div:first-child { font-size:2em; color: green; }
+/* div.my-title .my-header { font-size:2em; color: green; } */
+/* #xyz { font-size:2em; color: green;} */
