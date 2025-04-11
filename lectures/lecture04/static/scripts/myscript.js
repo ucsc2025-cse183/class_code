@@ -1,31 +1,22 @@
+function game() {
+    let number = parseInt(Math.floor(Math.random() * 1000));
+    console.log(document.getElementById("submit-button"));
+    let button = document.getElementById("submit-button");
+    let input = document.getElementById("game-guess");
+    let game = document.getElementById("game-output");
 
-function game(max_number) {
-    let number = Math.floor(Math.random() * max_number);
+    function make_guess() {
+        let guess = parseInt(input.value);
+        if (guess == number) {
+            game.innerHTML = "<div>You won!</div>";
+        } else if (guess < number) {
+            game.innerHTML = "<div style='color:red'>" + guess + " is too low</div>";
+        } else {
+            game.innerHTML = "<div style='color:red'>" + guess + " is too high</div>";
+        }
+    };
 
-    let output = document.getElementById("game-output");
-    function myprint(text) {
-        output.innerHTML = output.innerHTML + text;
-    }
-
-    while(true) {
-        let guess = parseInt(prompt("make a guess"));
-        if (guess < 0)
-        {
-            myprint("you quit the game");
-            break;
-        }
-        if (guess == number)
-        {
-            myprint("you won!");
-            break;
-        }
-        if (guess < number)
-        {
-            myprint("your guess " + guess + " is too low");
-        }
-        else
-        {
-            myprint("your guess " + guess + " is too high");
-        }
-    }
+    button.onclick = make_guess;
 }
+
+game();

@@ -14,6 +14,8 @@ border: 20px 15ps  10px   5px  solid red;
 margin: 20px;
 padding: 10px;
 color: black;
+width: 100px; // 100 (percent), 50vw, 70vh, 40em
+height: 200px;
 background: white;        
 background-image: url("http://....")
 display: block, inline, inline-block, none

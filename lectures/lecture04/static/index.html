@@ -41,7 +41,9 @@
         <section class="bg-light">
             <div class="container section">
                 <div class="content has-text-centered">
-                    <h1 onclick="game(1000)">Click me to play the game</h1>
+                    <h1>Play the game - guess a number</h1>
+                    <input name="guess" id="game-guess"/>
+                    <button id="submit-button">Submit your guess</button>
                 </div>
 
                 <nav class="columns">
@@ -53,8 +55,11 @@
                                 </span>
                             </figure>
                             <div class="media-content">
-                                <div class="content" id="game-output">
-                                    <h4 class="heading"><strong>Game Output</strong></h4>                                    
+                                <div class="content">
+                                    <h4 class="heading"><strong>Game Output</strong></h4>
+                                    <div id="game-output">
+
+                                    </div>
                                 </div>
                             </div>
                         </article>
@@ -63,7 +68,6 @@
                 </nav>
             </div>
         </section>
-
 
         <section class="bg-light">
             <div class="container section">
