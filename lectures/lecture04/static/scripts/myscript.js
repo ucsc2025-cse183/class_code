@@ -1,6 +1,9 @@
+"use strict";
+
+
 function game() {
     let number = parseInt(Math.floor(Math.random() * 1000));
-    console.log(document.getElementById("submit-button"));
+    // console.log(document.getElementById("submit-button"));
     let button = document.getElementById("submit-button");
     let input = document.getElementById("game-guess");
     let game = document.getElementById("game-output");
@@ -15,7 +18,7 @@ function game() {
             game.innerHTML = "<div style='color:red'>" + guess + " is too high</div>";
         }
     };
-
+    
     button.onclick = make_guess;
 }
 
