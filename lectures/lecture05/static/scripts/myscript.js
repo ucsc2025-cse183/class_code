@@ -40,15 +40,13 @@ let game = (function () {
             if (y > 0) {
                 bullet.style.left = x + "px";
                 bullet.style.top = y + "px";                
+                bullets_to_keep.push(bullet);
             } else {
-                bullet.style.display = "none";
-                // TODO: remove the bullet from the bulltes list
+                bullet.style.display = "none";                
+                // delete bullet
             }
-            /*
-                TODO: if bullet collides with alien
-                mark alien as 0 and remove the bullet
-            */
-        }
+            // handle collision
+        }        
     }
 
     function mouseMoved(event) {

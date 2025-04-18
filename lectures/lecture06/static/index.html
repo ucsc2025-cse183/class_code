@@ -1,0 +1,18 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <div id="myapp">
+            <h2>Guess a number</h2>
+            <input v-model="guess"/>
+            <div v-if="guess==number">You win!</div>
+            <div v-if="guess<number">Too low</div>
+            <div v-if="guess>number">Too high</div>
+            <div v-if="guess==number">
+                <img v-for="i in range(0,number)" src="alien.png" width="100px"/>
+            </div>
+        </div>
+    </body>
+    <!-- script src="myscript1.js"></script -->
+    <script type="module" src="myscript2.js"></script>
+</html>

@@ -109,10 +109,12 @@ class Assignment(AssignmentBase):
         "each card header should have title with the name of the style of the corrensponding button."
         expected = ["primary", "link", "info", "success", "warning", "danger"]
         match = 0
+        print('step 10')
         for card in self.cards:
+            print(card)
             title = card.find(class_="card-header-title")
             if title:
-                name = title.text.lower()
+                name = title.text.lower().strip()
                 if name in expected:
                     expected.remove(name)
                     button = card.find("button", class_=f"is-{name}")

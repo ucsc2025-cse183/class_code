@@ -1,0 +1,27 @@
+#game {
+    position: relative;
+    width: 800px; height: 600px; background-color:black;    
+}
+
+.alien {
+    position: absolute;
+    top: 20px;  
+    width: 100px;
+}
+
+.bullet {
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    background-color:yellow;
+    border-radius: 10;
+}
+
+#gun {
+    position: absolute;
+    width: 20px;
+    height: 40px;
+    left: 390px;
+    top: 560px;
+    background-color: red;
+}
