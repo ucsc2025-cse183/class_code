@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="game.css">
+    </head>
+    <body>
+        <div id="game">            
+             <div class="game-inner" v-on:click="fire" v-on:mousemove="move">            
+                <div v-for="alien in aliens"
+                    class="alien"
+                    v-bind:style="{left:alien.x, top:alien.y, opacity:(alien.alive===true?1.0:0.3)}"
+                ></div>
+                <div v-for="bullet in bullets"
+                    class="bullet"
+                    v-bind:style="{left:bullet.x, top:bullet.y}"
+                    ></div>
+                <div class="gun" v-bind:style="{left:gun.x}"></div>
+            </div>
+        </div>  
+    </body>
+    <!-- script src="myscript1.js"></script -->
+    <script type="module" src="alien.js"></script>
+</html>

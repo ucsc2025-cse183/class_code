@@ -1,4 +1,4 @@
-#game {
+.game-inner {
     position: relative;
     width: 800px; height: 600px; background-color:black;    
 }
@@ -7,6 +7,9 @@
     position: absolute;
     top: 20px;  
     width: 100px;
+    height: 80px;
+    background-image: url(./alien.png);
+    background-size: contain; 
 }
 
 .bullet {
@@ -17,7 +20,7 @@
     border-radius: 10;
 }
 
-#gun {
+.gun {
     position: absolute;
     width: 20px;
     height: 40px;
