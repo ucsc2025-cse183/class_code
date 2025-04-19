@@ -111,8 +111,10 @@ class Assignment(AssignmentBase):
         self.add_comment("Third column is correct", 1)
 
     def step08(self):
-        ro_fields = [4, 5, 6, 9, 10, 13, 14] #removed row 12: Total tax
+        ro_fields = [4, 5, 6, 9, 10, 12, 13, 14]
         for i in range(1, 15):
+            if i == 12:
+                pass
             input_field = self.browser.find_element(By.NAME, f"value-{i}")
             is_readonly = input_field.get_attribute("readonly") is not None
             assert is_readonly == (
@@ -142,11 +144,11 @@ class Assignment(AssignmentBase):
             value_1 = inp1.get_attribute("value")
             value_2 = inp2.get_attribute("value")
             value_3 = inp3.get_attribute("value")
-            time.sleep(1)
+            time.sleep(1)            
             value_4 = inp4.get_attribute("value")
             assert (
                 safe_float(value_4) == expected
-            ), f"Row 4 computation for inputs {value_1}, {value_2}, {value_3}, returned {value_4} instead of {expected}"
+            ), f"Row 4 computation for inputs {v1}, {v2}, {v3}, returned {value_4} instead of {expected}"
         self.add_comment("Row 4 computation correct for all test values", 1)
 
     def step10(self):
