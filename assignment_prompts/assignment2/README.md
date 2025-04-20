@@ -1,6 +1,6 @@
 # Assignment: Creating a Tax Form
 
-You should work in the `assignment1` folder under you personal read.
+You should work in the `assignment2` folder under you personal repo.
 Create a file `index.html` and implement a form that looks like this 1040EZ form:
 
 ![Form](f1040ez.png)
