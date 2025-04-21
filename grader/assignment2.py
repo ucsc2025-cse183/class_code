@@ -114,7 +114,7 @@ class Assignment(AssignmentBase):
         ro_fields = [4, 5, 6, 9, 10, 12, 13, 14]
         for i in range(1, 15):
             if i == 12:
-                pass
+                continue
             input_field = self.browser.find_element(By.NAME, f"value-{i}")
             is_readonly = input_field.get_attribute("readonly") is not None
             assert is_readonly == (
