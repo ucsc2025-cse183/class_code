@@ -37,7 +37,12 @@ Functionality:
 - Ability to edit recipes authored by the logged-in user only.
 - Users cannot edit others' recipes.
 
+Documentation:
+
+- A PDF with instructions and screenshots showing functionality
+
 ### Requirements for Full Grade
+
 To earn full credit, your app must include all of the above, plus:
 
 - Import data from TheMealDB API to populate recipes (import only once; the import code must be included).
@@ -60,19 +65,26 @@ Implementing any of the following will earn you bonus points:
 You will build a hotel room reservation web application that allows staff (and optionally customers) to manage rooms, bookings, and customer information. This project emphasizes relational data modeling, user roles, and secure access control.
 
 ### Minimum Requirements (for a passing grade)
+
 Your app must include the following database tables and features:
 
 Database Schema:
+
 - A table for rooms with fields: number_of_beds, amenities, price_per_night, image
 - A table for customers with fields: name, address, phone_number, email, etc.
 - A table for reservations with fields: room_id, customer_id, start_date, end_date, notes, total_cost
 
 Functionality:
+
 - Ability to add and edit rooms.
 - Ability to search available rooms based on date range and filters.
 - Ability to search customers by name or email.
 - Ability to add new customers.
 - Ability to create and cancel reservations.
+
+Documentation:
+
+- A PDF with instructions and screenshots showing functionality
 
 ### Requirements for Full Grade
 To earn full credit, your app must also include:
@@ -82,11 +94,13 @@ To earn full credit, your app must also include:
 - Ability for customers to register and view their reservation history (matched by email).
 
 Access control:
+
 - Only managers (staff) can create and modify reservations.
 - Customers can view, but not alter, their bookings.
 - A public API endpoint to retrieve room information in JSON format.
 
 ### Optional Features (for extra credit)
+
 You can earn additional credit by implementing the following features:
 
 - Allow customers to log in and create their own reservations.
