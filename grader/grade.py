@@ -17,6 +17,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
 
 try:
     from webdriver_manager.chrome import ChromeDriverManager
@@ -41,37 +42,63 @@ class StopGrading(Exception):
 
 
 def make_chrome_driver(headless=True):
-    options = webdriver.ChromeOptions()
-    if ChromeDriverManager:
-        try:
-            chromium_path = run("which chromium")
-            version = run(f"{chromium_path} --version").split()[1].split(".")[0]
-            driver = ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()
-            options.binary_location = chromium_path
-        except Exception:
-            driver = ChromeDriverManager().install()
-        service = Service(driver)
-    else:
-        service = Service("/usr/lib/chromium/chromedriver")
-        options.binary_location = "/usr/lib/chromium/chromium"
+    """
+    Creates a Selenium Chrome driver instance using chromedriver and chromium
+    provided by the Nix environment, with robust options for headless mode.
+    """
+    options = Options()  # Use Options class directly
+    print(f"make_chrome_driver called with headless={headless}")
 
-    options.add_argument("--window-size=1024,768")
-    options.add_argument("--disable-extensions")
-    options.add_argument("--ignore-certificate-errors")
     if headless:
+        print("Configuring headless options...")
+        options.add_argument("--headless")
         options.add_argument("--no-sandbox")
-    options.add_argument("--headless")
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--disable-extensions")
-    options.add_argument("--enable-automation")
-    options.add_argument("--disable-browser-side-navigation")
-    options.add_argument("--disable-web-security")
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--disable-infobars")
-    options.add_argument("--disable-gpu")
-    options.add_argument("--disable-setuid-sandbox")
-    options.add_argument("--disable-software-rasterizer")
-    return webdriver.Chrome(options=options, service=service)
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--disable-gpu")
+        options.add_argument("--window-size=1920,1080")
+        options.add_argument("--disable-extensions")  # line added
+
+    else:
+        print("Configuring non-headless options...")
+
+    chromedriver_path = shutil.which("chromedriver")
+    chromium_path = shutil.which("chromium") or shutil.which("ungoogled-chromium")
+
+    if not chromedriver_path:
+        raise EnvironmentError(
+            "chromedriver executable not found in PATH. "
+            "Is pkgs.chromedriver included in your shell.nix?"
+        )
+    if not chromium_path:
+        raise EnvironmentError(
+            "chromium or ungoogled-chromium executable not found in PATH. "
+            "Is pkgs.ungoogled-chromium or pkgs.chromium included in your shell.nix?"
+        )
+
+    print(f"Using ChromeDriver: {chromedriver_path}")
+    print(f"Using Chromium Binary: {chromium_path}")
+    print(f"Using Options Arguments: {options.arguments}")
+
+    options.binary_location = chromium_path
+
+    # --- Enable ChromeDriver Service Logging ---
+    log_path = "/tmp/chromedriver.log"
+    print(f"Enabling ChromeDriver log at: {log_path}")
+    service_args = ["--verbose", f"--log-path={log_path}"]
+    service = Service(executable_path=chromedriver_path, service_args=service_args)
+    options.add_argument("--enable-logging")
+    options.add_argument("--v=1")
+
+    try:
+        print("Initializing WebDriver...")
+        driver = webdriver.Chrome(service=service, options=options)
+        print("WebDriver Initialized.")
+    except Exception as e:
+        print(f"Error initializing Chrome Driver: {e}")
+        print(f"Check logs for details: {log_path}")
+        raise
+
+    return driver
 
 
 class colors:
