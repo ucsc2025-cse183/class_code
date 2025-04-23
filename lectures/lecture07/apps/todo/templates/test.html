@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <h1>Hello from my first template</h1>
+
+        <div style="border: 2px solid red">
+        [[=form]]
+        </div>
+
+        <ul>
+            [[for row in rows:]]
+            <li>
+                [[=row.deadline]]
+                [[=row.description]]
+                [[if row.done:]](completed)[[else:]](not completed)[[pass]]
+            </li>
+            [[pass]]
+        </ul>
+    </body>
+</html>

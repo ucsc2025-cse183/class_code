@@ -1,0 +1,56 @@
+timestamp: 2025-04-22T20:05:00.349606
+CREATE TABLE "auth_user"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "username" CHAR(512) UNIQUE,
+    "email" CHAR(512) UNIQUE,
+    "password" CHAR(512),
+    "first_name" CHAR(512),
+    "last_name" CHAR(512),
+    "sso_id" CHAR(512),
+    "action_token" CHAR(512),
+    "last_password_change" TIMESTAMP,
+    "past_passwords_hash" TEXT
+);
+success!
+timestamp: 2025-04-22T20:05:00.359182
+CREATE TABLE "auth_user_tag_groups"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "tagpath" CHAR(512),
+    "record_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  
+);
+success!
+timestamp: 2025-04-22T20:05:48.386633
+CREATE TABLE "item"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "message" CHAR(512)
+);
+success!
+timestamp: 2025-04-22T20:06:29.392228
+ALTER TABLE "item" ADD "description" CHAR(512);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2025-04-22T20:18:54.308986
+ALTER TABLE "item" ADD "deadline" TIMESTAMP;
+success!
+timestamp: 2025-04-22T20:19:24.781246
+ALTER TABLE "item" ADD "done" CHAR(1);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
