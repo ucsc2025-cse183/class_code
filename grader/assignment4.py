@@ -16,6 +16,9 @@ from grade import (
     py4web,
 )
 
+import re
+from pydal import DAL, Field
+
 
 def fetch(method, url, body=None):
     print(f"Trying {method} {body or ''} to {url} ...")
@@ -72,17 +75,47 @@ class Assignment(AssignmentBase, py4web):
         self.add_comment("Page loads correctly", 1.0)
 
     def step02(self):
-        "found the index page"
-        sys.path.append(os.path.join(self.apps_folder))
-        env = {}
+        """Check model definition without full common.py execution"""
+        models_path = os.path.join(self.apps_folder, "bird_spotter", "models.py")
+        if not os.path.exists(models_path):
+            raise AssertionError("models.py not found")
+
         try:
-            exec("import bird_spotter.models as testmodule", env)
-        except Exception:
-            raise AssertionError("unable to load models.py")
-        testmodule = env.get("testmodule")
-        assert testmodule and hasattr(testmodule, "db"), "no db defined models.py"
-        assert "bird" in testmodule.db.tables, "table bird not found in models.py"
-        bird = testmodule.db["bird"]
+            with open(models_path, "r") as f:
+                models_code_lines = f.readlines()
+        except IOError:
+            raise AssertionError("Cannot read models.py")
+
+        filtered_code_lines = [
+            line
+            for line in models_code_lines
+            if not line.strip().startswith("from .common import")
+        ]
+        modified_code = "".join(filtered_code_lines)
+
+        if not modified_code.strip():
+            raise AssertionError(
+                "models.py content seems empty after removing common import."
+            )
+
+        test_db = DAL("sqlite://:memory:")
+
+        exec_globals = {
+            "__file__": models_path,
+            "db": test_db,
+            "Field": Field,
+        }
+
+        try:
+            exec(modified_code, exec_globals)
+        except Exception as e:
+            raise AssertionError(f"Error executing models.py content: {e}")
+
+        assert (
+            "bird" in test_db.tables
+        ), "table 'bird' not found in models.py definitions"
+        bird = test_db["bird"]
+
         assert "name" in bird.fields, "Bird has no name field"
         assert "sightings" in bird.fields, "Bird has no sightings field"
         assert "habitat" in bird.fields, "Bird has no habitat field"
@@ -91,7 +124,6 @@ class Assignment(AssignmentBase, py4web):
         assert bird.sightings.type == "integer", "db.bird.sightings is not an integer"
         assert bird.habitat.type == "string", "db.bird.habitat is not a string"
         assert bird.weight.type == "float", "db.bird.weight is not a float"
-        self.bird = bird
         self.add_comment("Model defined correctly", 1.0)
 
     def step03(self):
