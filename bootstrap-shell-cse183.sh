@@ -1,13 +1,28 @@
 #! /bin/bash
 cd $(dirname "$0")
 if [ $USER != "mdipierro" ]; then
-    echo "git reset --hard origin/main"
+  echo "git reset --hard origin/main"
 fi
 echo "Installing/upgrading Nix and required packages (not worries, not affecting your OS)"
 daemon=${1:---daemon}
-export NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1
+
+# Detect architecture and set appropriate flags
+ARCH=$(uname -m)
+if [ "$ARCH" = "aarch64" ]; then
+  echo "Detected ARM architecture (aarch64)"
+  export NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1
+  export NIXPKGS_ALLOW_INSECURE=1
+  export NIXPKGS_ALLOW_BROKEN=1
+fi
+
 which nix-shell || curl -k -L https://nixos.org/nix/install | sh -s -- $daemon
-cat <<\EOF > shell.nix
+
+# Wait for Nix to be properly initialized
+if [ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+  . "$HOME/.nix-profile/etc/profile.d/nix.sh"
+fi
+
+cat <<\EOF >shell.nix
 let
   nixpkgs-src = builtins.fetchTarball {
     url = "https://github.com/NixOS/nixpkgs/tarball/nixos-24.05";
@@ -17,6 +32,9 @@ let
   pkgs = import nixpkgs-src {
     config = {
       allowUnfree = true;
+      allowBroken = true;
+      allowInsecure = true;
+      allowUnsupportedSystem = true;
     };
   };
 
@@ -102,7 +120,9 @@ let
       export GIT_EDITOR=nano
 
       if [ -f "grader/grade.py" ]; then
-          alias grade="python $(realpath grader/grade.py)"
+          grade() {
+              python "$(realpath grader/grade.py)" --override "$1"
+          }
       fi
       echo "Nix shell environment ready. Virtual env (.venv) activated."
       echo "Type 'grade <assignment_folder>' to run the grader."
@@ -112,4 +132,10 @@ in shell
 EOF
 
 echo "Running nix-shell..."
+# src Nix environment if not already sourced
+if [ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+  . "$HOME/.nix-profile/etc/profile.d/nix.sh"
+fi
+
 nix-shell shell.nix
+
