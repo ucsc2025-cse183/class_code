@@ -7,8 +7,7 @@ echo "Installing/upgrading Nix and required packages (not worries, not affecting
 daemon=${1:---daemon}
 
 # Detect architecture and set appropriate flags
-ARCH=$(uname -m)
-if [ "$ARCH" = "aarch64" ]; then
+if [ "$(uname -m)" == "aarch64" ]; then
   echo "Detected ARM architecture (aarch64)"
   export NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1
   export NIXPKGS_ALLOW_INSECURE=1
@@ -120,9 +119,7 @@ let
       export GIT_EDITOR=nano
 
       if [ -f "grader/grade.py" ]; then
-          grade() {
-              python "$(realpath grader/grade.py)" --override "$1"
-          }
+          alias grade="python $(realpath grader/grade.py)"
       fi
       echo "Nix shell environment ready. Virtual env (.venv) activated."
       echo "Type 'grade <assignment_folder>' to run the grader."
