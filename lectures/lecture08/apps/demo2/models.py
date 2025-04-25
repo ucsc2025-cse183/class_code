@@ -17,3 +17,4 @@ if db(db.color).count() == 0:
     db.color.insert(name="blue")    
     db.color.insert(name="purple")
     print(db(db.color).select())
+    db.commit()
