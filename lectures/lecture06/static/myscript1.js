@@ -1,4 +1,4 @@
-"use script";
+"use strict";
 
 // this myscript1.js
 

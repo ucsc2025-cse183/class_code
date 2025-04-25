@@ -1,4 +1,4 @@
-"use script";
+"use strict";
 
 import { createApp, ref, watch } from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.13/vue.esm-browser.min.js";
 
