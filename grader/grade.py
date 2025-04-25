@@ -27,7 +27,6 @@ except:
 
 __version__ = "20250403.1"
 
-
 def run(cmd):
     print("Running:", cmd)
     return (
@@ -41,14 +40,16 @@ class StopGrading(Exception):
     pass
 
 
-def make_chrome_driver(headless=True):
+def make_chrome_driver(headless=None):
     """
     Creates a Selenium Chrome driver instance using chromedriver and chromium
     provided by the Nix environment, with robust options for headless mode.
     """
+    if headless is None:
+        print("DEFAULS=", DEFAULTS)
+        headless = DEFAULTS.get("headless")
     options = Options()  # Use Options class directly
     print(f"make_chrome_driver called with headless={headless}")
-
     if headless:
         print("Configuring headless options...")
         options.add_argument("--headless")
@@ -298,7 +299,7 @@ class AssignmentBase:
         print(comment)
         self._comments.append((comment, points))
 
-    def grade(self):
+    def grade(self, interactive):
         step_names = [name for name in dir(self) if name.startswith("step")]
         for step_name in step_names:
             step = getattr(self, step_name)
@@ -317,6 +318,9 @@ class AssignmentBase:
                 self.add_comment(
                     (step.__doc__ or f"{step_name}:") + " (Unable to grade)", 0
                 )
+            if interactive:
+                if input("press enter to continue (q to exist)...").lower()[:1] == "q":
+                    break
         grade = 0
         for comment, points in self._comments:
             print("=" * 40)
@@ -328,7 +332,7 @@ class AssignmentBase:
         return grade
 
 
-def grade(rel_path):
+def grade(rel_path, interactive):
     """entry point"""
     assignment_name = rel_path
     print(f"Begin grading {assignment_name}")
@@ -337,6 +341,8 @@ def grade(rel_path):
     )
     try:
         module = SourceFileLoader(assignment_name, assignment_file).load_module()
+        # monkey patch
+        module.make_chrome_driver = lambda i=interactive: make_chrome_driver(not i)
     except Exception:
         print(traceback.format_exc())
         print(colors.FAIL + f"Error: unable to load {assignment_file}" + colors.END)
@@ -348,7 +354,7 @@ def grade(rel_path):
         return 0
     try:
         assignment = assignment_class(os.getcwd())
-        num = assignment.grade()
+        num = assignment.grade(interactive)
     except StopGrading:
         # this only happens when error is in constructor
         return 0
@@ -361,13 +367,14 @@ def grade(rel_path):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--override", help="specify a folder with the assignment")
+    parser.add_argument("--interactive", action="store_true", help="makes the grader interactive")
     args = parser.parse_args()
     if args.override:
         os.chdir(args.override)
         rel_path = os.getcwd().split("/")[-1].lower()
     else:
         rel_path = check_student_repo()
-    grade(rel_path)
+    grade(rel_path, args.interactive)
     sys.exit(0)
 
 
