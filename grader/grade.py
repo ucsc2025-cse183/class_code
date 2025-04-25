@@ -52,14 +52,22 @@ def make_chrome_driver(headless=True):
     if headless:
         print("Configuring headless options...")
         options.add_argument("--headless")
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
-        options.add_argument("--disable-gpu")
-        options.add_argument("--window-size=1920,1080")
-        options.add_argument("--disable-extensions")  # line added
-
     else:
         print("Configuring non-headless options...")
+
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--window-size=1920,1080")
+    options.add_argument("--disable-extensions")  # line added
+    options.add_argument("--ignore-certificate-errors")
+    options.add_argument("--enable-automation")
+    options.add_argument("--disable-browser-side-navigation")
+    options.add_argument("--disable-web-security")
+    options.add_argument("--disable-infobars")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--disable-setuid-sandbox")
+    options.add_argument("--disable-software-rasterizer")
 
     chromedriver_path = shutil.which("chromedriver")
     chromium_path = shutil.which("chromium") or shutil.which("ungoogled-chromium")
