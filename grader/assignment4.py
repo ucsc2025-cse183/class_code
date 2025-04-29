@@ -79,7 +79,8 @@ class Assignment(AssignmentBase, Py4web):
         models_path = os.path.join(self.apps_folder, "bird_spotter", "models.py")
         if not os.path.exists(models_path):
             raise AssertionError("models.py not found")
-
+        sys.path.append(os.path.join(self.apps_folder))        
+        env = {}
         try:
             exec("import bird_spotter.models as testmodule", env)
         except Exception:
