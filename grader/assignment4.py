@@ -16,6 +16,9 @@ from grade import (
     py4web,
 )
 
+import re
+from pydal import DAL, Field
+
 
 def fetch(method, url, body=None):
     print(f"Trying {method} {body or ''} to {url} ...")
@@ -72,17 +75,47 @@ class Assignment(AssignmentBase, py4web):
         self.add_comment("Page loads correctly", 1.0)
 
     def step02(self):
-        "found the index page"
-        sys.path.append(os.path.join(self.apps_folder))
-        env = {}
+        """Check model definition without full common.py execution"""
+        models_path = os.path.join(self.apps_folder, "bird_spotter", "models.py")
+        if not os.path.exists(models_path):
+            raise AssertionError("models.py not found")
+
         try:
-            exec("import bird_spotter.models as testmodule", env)
-        except Exception:
-            raise AssertionError("unable to load models.py")
-        testmodule = env.get("testmodule")
-        assert testmodule and hasattr(testmodule, "db"), "no db defined models.py"
-        assert "bird" in testmodule.db.tables, "table bird not found in models.py"
-        bird = testmodule.db["bird"]
+            with open(models_path, "r") as f:
+                models_code_lines = f.readlines()
+        except IOError:
+            raise AssertionError("Cannot read models.py")
+
+        filtered_code_lines = [
+            line
+            for line in models_code_lines
+            if not line.strip().startswith("from .common import")
+        ]
+        modified_code = "".join(filtered_code_lines)
+
+        if not modified_code.strip():
+            raise AssertionError(
+                "models.py content seems empty after removing common import."
+            )
+
+        test_db = DAL("sqlite://:memory:")
+
+        exec_globals = {
+            "__file__": models_path,
+            "db": test_db,
+            "Field": Field,
+        }
+
+        try:
+            exec(modified_code, exec_globals)
+        except Exception as e:
+            raise AssertionError(f"Error executing models.py content: {e}")
+
+        assert (
+            "bird" in test_db.tables
+        ), "table 'bird' not found in models.py definitions"
+        bird = test_db["bird"]
+
         assert "name" in bird.fields, "Bird has no name field"
         assert "sightings" in bird.fields, "Bird has no sightings field"
         assert "habitat" in bird.fields, "Bird has no habitat field"
@@ -91,7 +124,6 @@ class Assignment(AssignmentBase, py4web):
         assert bird.sightings.type == "integer", "db.bird.sightings is not an integer"
         assert bird.habitat.type == "string", "db.bird.habitat is not a string"
         assert bird.weight.type == "float", "db.bird.weight is not a float"
-        self.bird = bird
         self.add_comment("Model defined correctly", 1.0)
 
     def step03(self):
@@ -263,22 +295,67 @@ class Assignment(AssignmentBase, py4web):
         self.add_comment("Inputs validated correctly", 1)
 
     def step12(self):
-        # select the bird
-        inputs = self.browser.find_elements(By.TAG_NAME, "input")
-        time.sleep(1)
-        # click the edit button, 0 is the add sightings button
-        buttons = self.browser.find_elements(By.TAG_NAME, "button")
-        buttons[1].click()
-        time.sleep(1)
-        # fill the input fields
-        inputs = self.browser.find_elements(By.TAG_NAME, "input")
-        inputs[2].send_keys("-1")
-        # click the save button, 0 is the add sightings button
-        buttons = self.browser.find_elements(By.TAG_NAME, "button")
-        buttons[1].click()
-        time.sleep(5)
-        element = self.find(".errors")
-        assert (
-            element and "weight" in element.text
-        ), "Expected to see an error in a div of class 'errors'"
-        self.add_comment("Correct error reporting", 2.0)
+        """Check for error display on invalid input using robust selectors (concise)"""
+        print("step12: Checking UI error display")
+        self.refresh()
+        target_bird_name = "pigeon"
+        time.sleep(2)
+
+        try:
+            pigeon_card_xpath = f"//div[contains(@class, 'card') and .//div[contains(@class, 'card-header-title') and normalize-space()='{target_bird_name}']]"
+            pigeon_card = self.browser.find_element(By.XPATH, pigeon_card_xpath)
+            print(f"Found card for '{target_bird_name}'")
+
+            edit_button = pigeon_card.find_element(
+                By.XPATH, ".//button[normalize-space()='Edit']"
+            )
+            edit_button.click()
+            print("Clicked 'Edit'.")
+            time.sleep(1)
+
+            weight_input = pigeon_card.find_element(
+                By.XPATH,
+                ".//th[contains(text(), 'Weight')]/following-sibling::td/input",
+            )
+            weight_input.clear()
+            weight_input.send_keys("-1")
+            print("Entered '-1' in weight.")
+            time.sleep(0.5)
+
+            save_button = pigeon_card.find_element(
+                By.XPATH, ".//button[normalize-space()='Save']"
+            )
+            save_button.click()
+            print("Clicked 'Save'.")
+
+            print("Waiting for potential error display...")
+            time.sleep(5)
+
+            error_element = pigeon_card.find_element(By.CSS_SELECTOR, ".errors")
+            error_text = error_element.text
+            print(f"Found error element with text: '{error_text}'")
+
+            assert (
+                "weight" in error_text.lower()
+            ), f"Error div found, but does not contain 'weight'. Text: '{error_text}'"
+
+            print("Correct error message containing 'weight' found.")
+            self.add_comment("Correct error reporting", 2.0)
+
+        except Exception as e:
+            card_html = "Could not get card HTML."
+            try:
+                pigeon_card_element = self.browser.find_element(
+                    By.XPATH, pigeon_card_xpath
+                )
+                card_html = pigeon_card_element.get_attribute("outerHTML")
+            except:
+                pass
+            print("\n--- Pigeon Card HTML at time of error check ---")
+            print(card_html)
+            print("--- End Card HTML ---\n")
+            assert (
+                False
+            ), f"Failed to find an expected element within the pigeon card ({e.msg})"
+        except Exception as e:
+            assert False, f"An unexpected error occurred during step 12: {e}"
