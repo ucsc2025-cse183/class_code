@@ -401,15 +401,15 @@ class Assignment(AssignmentBase):
 
     def step08(self):
         "there should be a button of class reset that when clicked, resets the game"
-
+        self.refresh()
         buttons = self.get_buttons()
         buttons[0, 0].click()
         time.sleep(0.3)
 
-        try:
-            reset = self.browser.find_element(By.CSS_SELECTOR, ".reset")
-        except:
-            assert False, "Reset button with class 'reset' not found"
+        #try:
+        reset = self.browser.find_element(By.CSS_SELECTOR, ".reset")
+        #except:
+        #    assert False, "Reset button with class 'reset' not found"
 
         assert (
             reset.is_displayed() and reset.is_enabled()
