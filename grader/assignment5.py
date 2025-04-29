@@ -13,7 +13,7 @@ from grade import (
     StopGrading,
     children,
     make_chrome_driver,
-    py4web,
+    Py4web,
 )
 
 
@@ -42,7 +42,7 @@ def fetch(method, url, body=None, cookies=None):
     return json
 
 
-class Assignment(AssignmentBase, py4web):
+class Assignment(AssignmentBase, Py4web):
     def __init__(self, folder):
         AssignmentBase.__init__(self, folder, max_grade=12)
         self.start_server(folder + "/apps", "tagged_posts")

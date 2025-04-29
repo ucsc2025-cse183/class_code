@@ -11,6 +11,7 @@ import traceback
 import threading
 from importlib.machinery import SourceFileLoader
 
+import py4web
 import selenium
 from bs4 import BeautifulSoup as Soup
 from selenium import webdriver
@@ -26,6 +27,8 @@ except:
     ChromeDriverManager = None
 
 __version__ = "20250403.1"
+
+py4web.Session.SECRET = "12387t123pyuirfgv1p0834gfv1p987324fgvp0978f24g3"
 
 def run(cmd):
     print("Running:", cmd)
@@ -231,7 +234,7 @@ def common_ancestor(a, b):
     return None
 
 
-class py4web:
+class Py4web:
     def start_server(self, source_apps, app_name, port=8888):
         print("Starting the server")
         self.app_name = app_name

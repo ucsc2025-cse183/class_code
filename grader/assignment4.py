@@ -13,7 +13,7 @@ from grade import (
     StopGrading,
     children,
     make_chrome_driver,
-    py4web,
+    Py4web,
 )
 
 
@@ -38,7 +38,7 @@ def fetch(method, url, body=None):
     return json
 
 
-class Assignment(AssignmentBase, py4web):
+class Assignment(AssignmentBase, Py4web):
     def __init__(self, folder):
         AssignmentBase.__init__(self, folder, max_grade=12)
         self.start_server(folder + "/apps", "bird_spotter")
@@ -78,7 +78,7 @@ class Assignment(AssignmentBase, py4web):
         try:
             exec("import bird_spotter.models as testmodule", env)
         except Exception:
-            raise AssertionError("unable to load models.py")
+            raise AssertionError("unable to load bird_spotter/models.py")
         testmodule = env.get("testmodule")
         assert testmodule and hasattr(testmodule, "db"), "no db defined models.py"
         assert "bird" in testmodule.db.tables, "table bird not found in models.py"
