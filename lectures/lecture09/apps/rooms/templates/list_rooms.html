@@ -1,0 +1,21 @@
+[[extend "layout.html"]]
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Size</th>
+        <th>Location</th>
+        <th></th>
+      </tr>
+[[for row in rows:]]
+  <tr>
+    <td>[[=row.name]]</td>
+    <td>[[=row.size]]</td>
+    <td>[[=row.location]]</td>
+    <td>
+        <a role="button" href="[[=URL('edit_room', row.id)]]">Manage</a>
+        <a role="button" href="[[=URL('make_reservation')]]">Reserve</a>
+    </td>
+  </tr>
+[[pass]]
+</table>

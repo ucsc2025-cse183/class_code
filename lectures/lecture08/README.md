@@ -38,3 +38,34 @@ GET ?a=1 => request.query.a
 POST a=1 => request.POST.a
 request.vars.a
 
+### Setup a VPS
+
+apt install python3-pip
+apt install python3.12-venv
+
+python3 -m venv venv
+. venv/bin/activate
+pip install py4web
+py4web setup apps
+py4web run apps
+
+py4web run apps --host 0.0.0.0 --port 8000
+
+
+### Hosting
+
+- digitalocean.com
+- pythonanywhere.com (instructions in the py4web docs)
+- https://portal.fineupp.com/websson/#home
+
+### py4web API
+
+from py4web import action, redirect, URL, request
+
+@action("index")   /{appname}/index -> myfunc()
+@action.uses("index.html") # template 
+def myfunction():
+    return "hello"  # a string
+    return {}       # a dict
+    return locals() # all local variables
+
