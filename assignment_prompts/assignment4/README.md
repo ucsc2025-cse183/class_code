@@ -1,4 +1,7 @@
-You must complete the provided bird_spotter app. It is a single page app.
+You must complete the provided bird_spotter app by adding the missing files from the scaffolding app:
+- settings.py
+- common.py
+Notice this is a single page app and does not use any templates.
 
 The main page is in apps/bird_spotter/static/index.html and in apps/bird_spotter/static/js/index.js
 - `/bird_spotter/` should redirect to `/bird_spotter/static/index.html` or turn it into a template (1 point)
