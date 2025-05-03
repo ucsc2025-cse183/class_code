@@ -1,0 +1,13 @@
+[[extend "layout.html"]]
+
+<h2>Your reservations</h2>
+
+<table>
+[[for row in rows:]]
+    <tr>
+        <td>[[=row.room_id.name]]</td>
+        <td>[[=row.start_datetime]]</td>
+        <td>[[=row.stop_datetime]]</td>
+    </tr>
+[[pass]]
+</table>

@@ -1,0 +1,38 @@
+timestamp: 2025-05-01T19:20:55.933413
+CREATE TABLE "auth_user"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "username" CHAR(512) UNIQUE,
+    "email" CHAR(512) UNIQUE,
+    "password" CHAR(512),
+    "first_name" CHAR(512),
+    "last_name" CHAR(512),
+    "sso_id" CHAR(512),
+    "action_token" CHAR(512),
+    "last_password_change" TIMESTAMP,
+    "past_passwords_hash" TEXT
+);
+success!
+timestamp: 2025-05-01T19:20:55.942257
+CREATE TABLE "auth_user_tag_groups"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "tagpath" CHAR(512),
+    "record_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  
+);
+success!
+timestamp: 2025-05-01T19:20:55.954932
+CREATE TABLE "room"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "name" CHAR(512),
+    "location" CHAR(512),
+    "size" INTEGER
+);
+success!
+timestamp: 2025-05-01T19:38:08.194562
+CREATE TABLE "reservation"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "room_id" INTEGER REFERENCES "room" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
+    "start_datetime" TIMESTAMP,
+    "stop_datetime" TIMESTAMP
+);
+success!

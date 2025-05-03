@@ -1,0 +1,18 @@
+<html>
+    <body>
+        <div id="myapp">
+            <h2>New todo</h2>
+            <div>
+                <input v-model="new_todo"/>
+                <input type="button" v-on:click="submit_new_todo()" value="record todo"/>
+            </div>
+            <h2>Todos</h2>
+            <div>
+                <div v-for="item in todo_items">
+                    <p v-text="item.description"></p>
+                </div>
+            </div>
+        </div>
+        <script src="js/todo.js" type="module"></script>
+    </body>
+</html>
