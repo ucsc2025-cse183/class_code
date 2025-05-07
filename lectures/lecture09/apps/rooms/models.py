@@ -3,7 +3,7 @@ from .common import Field, db
 
 db.define_table(
     "room",
-    Field("name", requires=IS_NOT_EMPTY()),
+    Field("name", requires=IS_NOT_IN_DB(db, "room.name")),
     Field("location", requires=IS_NOT_EMPTY()),
     Field("size", "integer", requires=IS_INT_IN_RANGE(1,1000)),
 )

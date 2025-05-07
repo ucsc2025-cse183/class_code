@@ -2,12 +2,18 @@
 
 <h2>Your reservations</h2>
 
+<div style="float:right">
+    <a role="button" href="[[=URL('search_rooms')]]">Make a reservation</a>
+ </div>
+ 
+
 <table>
 [[for row in rows:]]
     <tr>
         <td>[[=row.room_id.name]]</td>
         <td>[[=row.start_datetime]]</td>
         <td>[[=row.stop_datetime]]</td>
+        <td><a role="button" href="[[=URL('cancel_reservation',row.id)]]">Cancel</a></td>
     </tr>
 [[pass]]
 </table>

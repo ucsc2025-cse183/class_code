@@ -1,0 +1,26 @@
+[[extend "layout.html"]]
+
+<h2>Search Room availability</h2>
+
+[[=form]]
+[[if error:]]
+[[=error]]
+[[elif available_rooms:]]
+
+<table>
+[[for row in available_rooms:]]
+  <tr>
+    <td>[[=row.name]]</td>
+    <td>[[=row.size]]</td>
+    <td>[[=row.location]]</td>
+    <td>
+        <a role="button" href="[[=URL('edit_room', row.id)]]">Edit</a>
+        <a role="button" href="[[=URL('make_reservation', row.id)]]">Reserve</a>
+    </td>
+  </tr>
+[[pass]]
+</table>
+
+[[elif available_rooms is not None:]]
+No available rooms at this time
+[[pass]]

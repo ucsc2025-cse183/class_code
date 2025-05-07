@@ -5,12 +5,12 @@ from py4web.utils.form import Form
 import datetime
 
 @action("index")
-@action.uses("generic.html", auth)
+@action.uses("index.html", auth)
 def index():
     return {"message": "hello to room reservations app"}
 
 @action("register_room")
-@action.uses("generic.html", auth.user)
+@action.uses("register_room.html", auth.user)
 def register_room():
     form = Form(db.room)  # Create Form
     if form.accepted:
@@ -18,7 +18,7 @@ def register_room():
     return locals()
 
 @action("edit_room/<room_id:int>")
-@action.uses("generic.html", auth.user)
+@action.uses("edit_room.html", auth.user)
 def register_room(room_id):
     form = Form(db.room, room_id) # Update form 
     if form.accepted:
@@ -26,7 +26,7 @@ def register_room(room_id):
     return locals()
 
 @action("list_rooms")
-@action.uses("list_rooms.html", auth.user)
+@action.uses("list_rooms.html", auth)
 def list_rooms():
     rows = db(db.room).select() # Selecting rooms
     return locals()
@@ -58,14 +58,52 @@ def make_reservation(room_id):
             redirect(URL("list_my_reservations"))
     return locals()
 
+@action("search_rooms")
+@action.uses("search_rooms.html", auth.user)
+def search_rooms():
+    form = Form([
+        Field("start", "datetime", default="2025-06-10 12:00:00",requires=IS_DATETIME()),
+        Field("end", "datetime", default="2025-06-10 12:00:00",requires=IS_DATETIME())
+    ])     
+    error = None
+    available_rooms = None
+    if form.accepted:
+        start = form.vars["start"]
+        end = form.vars["end"]
+        minutes = (end - start).total_seconds()/60
+        if minutes < 10 or minutes > 24*60:
+            error = "reservation too short or too long"            
+        else:
+            reservations = db((db.reservation.start_datetime < end)&(db.reservation.stop_datetime > start)).select(db.reservation.room_id)
+            ids = [r.room_id for r in reservations]
+            available_rooms = db(~db.room.id.belongs(ids)).select()
+    return locals()
+
 @action("list_my_reservations")
 @action.uses("list_my_reservations.html", auth.user)
 def list_my_reservations():
     rows = db(
         (db.reservation.user_id==auth.user_id)&
         (db.reservation.start_datetime>datetime.datetime.now())
-    ).select(orderby=db.reservation.start_datetime)
+    ).select(orderby=db.reservation.start_datetime,limitby=(0,100))
     return locals()
+
+@action("cancel_reservation/<reservation_id:int>")
+@action.uses(auth.user)
+def cancel_reservation(reservation_id):
+    db((db.reservation.id==reservation_id)&(db.reservation.user_id==auth.user_id)).delete()
+    redirect(URL("list_my_reservations"))
+
+
+
+### API
+
+@action("api/rooms", method="GET")
+@action.uses(db)
+def list_rooms():
+    rows = db(db.room).select()
+    return locals()
+
 
 """
 old code

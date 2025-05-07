@@ -1,6 +1,10 @@
 [[extend "layout.html"]]
 
-<table>
+<div style="float:right">
+   <a role="button" href="[[=URL('register_room')]]">Register new room</a>
+</div>
+
+<!--table>
     <tr>
         <th>Name</th>
         <th>Size</th>
@@ -13,9 +17,13 @@
     <td>[[=row.size]]</td>
     <td>[[=row.location]]</td>
     <td>
-        <a role="button" href="[[=URL('edit_room', row.id)]]">Manage</a>
+        <a role="button" href="[[=URL('edit_room', row.id)]]">Edit</a>
         <a role="button" href="[[=URL('make_reservation', row.id)]]">Reserve</a>
     </td>
   </tr>
 [[pass]]
-</table>
+</table-->
+
+<script>
+  fetch("/rooms/api/rooms").then(function(res){return res.json()}).then(function(data){document.write(data);})
+</script>

@@ -15,6 +15,7 @@ from .common import (
     unauthenticated,
 )
 
+import time
 
 @action("index")
 def index():
