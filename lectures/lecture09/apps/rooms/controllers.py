@@ -26,7 +26,7 @@ def register_room(room_id):
     return locals()
 
 @action("list_rooms")
-@action.uses("list_rooms.html", auth)
+@action.uses("list_rooms.html", auth.user)
 def list_rooms():
     rows = db(db.room).select() # Selecting rooms
     return locals()

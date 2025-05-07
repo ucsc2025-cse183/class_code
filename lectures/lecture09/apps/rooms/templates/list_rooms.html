@@ -4,7 +4,10 @@
    <a role="button" href="[[=URL('register_room')]]">Register new room</a>
 </div>
 
-<!--table>
+<h2>Serverside content</h2>
+
+
+<table>
     <tr>
         <th>Name</th>
         <th>Size</th>
@@ -22,8 +25,22 @@
     </td>
   </tr>
 [[pass]]
-</table-->
+</table>
+
+
+<!--
+<h2>Ajax content</h2>
+
+<table id="content"></table>
 
 <script>
-  fetch("/rooms/api/rooms").then(function(res){return res.json()}).then(function(data){document.write(data);})
+  fetch("/rooms/api/rooms").then(function(res){return res.json();}).then(function(data){
+    let table = document.getElementById("content");
+    table.innerHTML="";
+    for(let i=0; i<data.rows.length; i++)
+    {
+      table.innerHTML += "<tr><td>" + data.rows[i].name + "</td></tr>";
+    }    
+});
 </script>
+-->
