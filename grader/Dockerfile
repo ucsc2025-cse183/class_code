@@ -16,7 +16,7 @@ RUN python -m pip install --upgrade requests
 RUN python -m pip install --upgrade mechanize
 RUN python -m pip install --upgrade BeautifulSoup4
 RUN python -m pip install --upgrade selenium
-RUN python -m pip install --upgrade py4web
+RUN python -m pip install --upgrade py4web==1.20250425.2
 
 ADD test.py test.py
 CMD ["python", "test.py"]
