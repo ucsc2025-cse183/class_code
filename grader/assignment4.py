@@ -84,6 +84,7 @@ class Assignment(AssignmentBase, Py4web):
         try:
             exec("import bird_spotter.models as testmodule", env)
         except Exception:
+            print(traceback.format_exc())
             raise AssertionError("unable to load bird_spotter/models.py")
         testmodule = env.get("testmodule")
         assert testmodule and hasattr(testmodule, "db"), "no db defined models.py"

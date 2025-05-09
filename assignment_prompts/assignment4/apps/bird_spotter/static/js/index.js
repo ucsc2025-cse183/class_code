@@ -25,7 +25,7 @@ app.config = {
                 this.birds.push(bird);
                 this.new_bird = app.empty_new_bird;
                 this.selected_birds = [bird];
-                // POST bird to /bird_spotter/birds which returns {id: #} and store it in bird.id = #;
+                // POST bird to /bird_spotter/api/birds which returns {id: #} and store it in bird.id = #;
                 // remove the following
                 bird.id = (new Date()).getTime();
             }            
@@ -38,7 +38,7 @@ app.config = {
             bird = clone(bird);            
             delete bird.id;
             delete bird.name;
-            // PUT bird to /bird_spotter/birds/{bird.id}            
+            // PUT bird to /bird_spotter/api/birds/{bird.id}            
             this.editing = {current: null};
         },
         cancel: function() {
@@ -49,7 +49,7 @@ app.config = {
         },
         add_sighting: function(bird) {
             bird.sightings += 1;
-            // POST {} to /bird_spotter/birds/{bird.id}/increase_sightings
+            // POST {} to /bird_spotter/api/birds/{bird.id}/increase_sightings
         },
         color: function(name) {            
             let hash = 0;
@@ -61,7 +61,7 @@ app.config = {
     }
 };
 app.load_data = function() {
-    // GET from /bird_spotter/birds {birds: [...]} and store it into app.vue.birds = [...]
+    // GET from /bird_spotter/api/birds {birds: [...]} and store it into app.vue.birds = [...] and app.vue.search();
 }
 
 app.vue = Vue.createApp(app.config).mount("#app");
