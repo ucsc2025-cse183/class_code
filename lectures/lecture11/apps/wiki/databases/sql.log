@@ -1,0 +1,43 @@
+timestamp: 2025-05-08T19:26:24.477394
+CREATE TABLE "auth_user"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "username" CHAR(512) UNIQUE,
+    "email" CHAR(512) UNIQUE,
+    "password" CHAR(512),
+    "first_name" CHAR(512),
+    "last_name" CHAR(512),
+    "sso_id" CHAR(512),
+    "action_token" CHAR(512),
+    "last_password_change" TIMESTAMP,
+    "past_passwords_hash" TEXT
+);
+success!
+timestamp: 2025-05-08T19:26:24.486222
+CREATE TABLE "auth_user_tag_groups"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "tagpath" CHAR(512),
+    "record_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  
+);
+success!
+timestamp: 2025-05-08T20:03:23.231171
+CREATE TABLE "page"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "content" TEXT
+);
+success!
+timestamp: 2025-05-08T20:03:23.240485
+CREATE TABLE "comment"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "page_id" INTEGER REFERENCES "page" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
+    "content" TEXT
+);
+success!
+timestamp: 2025-05-08T20:11:52.103131
+ALTER TABLE "page" ADD "author_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ;
+success!
+timestamp: 2025-05-08T20:11:52.112323
+ALTER TABLE "comment" ADD "author_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ;
+success!
+timestamp: 2025-05-08T20:22:48.361099
+ALTER TABLE "page" ADD "title" CHAR(512);
+success!
