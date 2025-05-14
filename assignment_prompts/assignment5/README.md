@@ -1,7 +1,7 @@
 In this assignment you will write an app inspired by twitter/ facebook/threads but with some differences:
 1) You will use the built-in auth to register and create accounts.
 2) You must be logged in to access any page other the buil-in auth pages
-3) App will consist of a single page vie app with 2 columns
+3) App will consist of a single page vue app with 2 columns
 4) The left column has a textarea to input a post followed by your feed
 5) Posts are text only they may contain tags as in #news #technology #whatever. When a new post is submitted, the post is parsed for tags, and it will be tagged in database with the provided tags.
 6) The right columns shows known tags and they should be toggable

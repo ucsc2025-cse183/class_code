@@ -41,3 +41,25 @@ success!
 timestamp: 2025-05-08T20:22:48.361099
 ALTER TABLE "page" ADD "title" CHAR(512);
 success!
+timestamp: 2025-05-13T21:04:57.488221
+ALTER TABLE "page" ADD "created_on" TIMESTAMP;
+timestamp: 2025-05-13T21:04:57.494108
+ALTER TABLE "page" ADD "created_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ;
+timestamp: 2025-05-13T21:04:57.498918
+ALTER TABLE "page" ADD "modified_on" TIMESTAMP;
+timestamp: 2025-05-13T21:04:57.505194
+ALTER TABLE "page" ADD "modified_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ;
+timestamp: 2025-05-13T21:04:57.511250
+ALTER TABLE "page" ADD "is_active" CHAR(1);
+success!
+timestamp: 2025-05-13T21:04:57.517880
+ALTER TABLE "comment" ADD "created_on" TIMESTAMP;
+timestamp: 2025-05-13T21:04:57.523677
+ALTER TABLE "comment" ADD "created_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ;
+timestamp: 2025-05-13T21:04:57.528704
+ALTER TABLE "comment" ADD "modified_on" TIMESTAMP;
+timestamp: 2025-05-13T21:04:57.532719
+ALTER TABLE "comment" ADD "modified_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ;
+timestamp: 2025-05-13T21:04:57.537098
+ALTER TABLE "comment" ADD "is_active" CHAR(1);
+success!

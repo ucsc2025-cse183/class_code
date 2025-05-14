@@ -3,8 +3,8 @@
 <div id="app">
   <h1>Wiki Page</h1>
   <div style="float:right">
+    <button v-if="edit_mode" v-on:click="save()">save</button>
     <input type="checkbox" v-model="edit_mode"/> Edit Mode
-    <button v-on:click="save()">save</button>
   </div>
   <div v-if="!edit_mode">
     <h2 v-text="page.title"></h2>

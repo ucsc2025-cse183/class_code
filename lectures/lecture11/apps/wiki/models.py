@@ -1,18 +1,18 @@
 from pydal.validators import *
-from .common import Field, db
+from .common import Field, db, auth
 
 db.define_table(
     "page",
-    Field("title", "string", requires=IS_NOT_IN_DB(db, "page.title")),   
+    Field("title", "string"), # requires=IS_NOT_IN_DB(db, "page.title")),   
     Field("content", "text", requires=IS_NOT_EMPTY()),
-    Field("author_id", "reference auth_user", writable=False),
+    auth.signature # page.create_by, page.created_on, page.updated_by, page.updated_in
     ) # content, author, timestamp
 
 db.define_table(
     "comment",
     Field("page_id", "reference page", writable=False),
     Field("content", "text"),
-    Field("author_id", "reference auth_user", writable=False),
+    auth.signature
 ) # content, author, timestamp
 
 if db(db.page).count() == 0:
