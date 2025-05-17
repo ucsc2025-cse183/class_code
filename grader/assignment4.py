@@ -44,7 +44,8 @@ def fetch(method, url, body=None):
 class Assignment(AssignmentBase, Py4web):
     def __init__(self, folder):
         AssignmentBase.__init__(self, folder, max_grade=12)
-        self.start_server(folder + "/apps", "bird_spotter")
+        self.apps_folder = os.path.join(folder, "apps")
+        self.start_server(self.apps_folder, "bird_spotter")
         self.browser = make_chrome_driver()
 
     def goto(self, url):

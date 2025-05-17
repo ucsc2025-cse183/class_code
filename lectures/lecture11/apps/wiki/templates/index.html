@@ -1,27 +1,6 @@
 [[extend 'layout.html']]
 
-<div id="app">
-  <h1>Wiki Page</h1>
-  <div style="float:right">
-    <button v-if="edit_mode" v-on:click="save()">save</button>
-    <input type="checkbox" v-model="edit_mode"/> Edit Mode
-  </div>
-  <div v-if="!edit_mode">
-    <h2 v-text="page.title"></h2>
-    <div v-html="converted(page.content)"></div>
-    <div>
-      <h4>Comments</h4>
-      <div v-for="comment in comments" style="margin-bottom:5px;background:#eee;padding: 10px">
-        <p v-text="comment.content"></p>
-      </div>
-    </div>
-  </div>
-  <div v-if="edit_mode">
-    <input v-model="page.title"/><br/>
-    <textarea v-model="page.content"></textarea>
-  </div>
-</div>
+Welcome to out Wiki
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.4.21/vue.global.prod.min.js"></script>
-<script src="[[=URL('static', 'js/showdown.js')]]"></script>
-<script src="[[=URL('static', 'js/index.js')]]"></script>
+click <a href="[[=URL('page/new')]]">Here</a> to create a page
+click <a href="[[=URL('page/1')]]">Here</a> to see page number 1

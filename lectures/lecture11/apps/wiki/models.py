@@ -5,7 +5,7 @@ db.define_table(
     "page",
     Field("title", "string"), # requires=IS_NOT_IN_DB(db, "page.title")),   
     Field("content", "text", requires=IS_NOT_EMPTY()),
-    auth.signature # page.create_by, page.created_on, page.updated_by, page.updated_in
+    auth.signature
     ) # content, author, timestamp
 
 db.define_table(
@@ -14,12 +14,5 @@ db.define_table(
     Field("content", "text"),
     auth.signature
 ) # content, author, timestamp
-
-if db(db.page).count() == 0:
-    db.page.insert(
-        title="my first page",
-        content="nothing to say",
-        author_id=1
-    )
 
 db.commit()
