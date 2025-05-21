@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bulma Two Column Layout</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">
+        <strong>MySite</strong>
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="#">Home</a>
+        <a class="navbar-item" href="#">About</a>
+        <a class="navbar-item" href="#">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <!-- Left Column -->
+        <div class="column is-one-third">
+          <aside class="menu">
+            <p class="menu-label">Navigation</p>
+            <ul class="menu-list">
+              <li><a>Dashboard</a></li>
+              <li><a>Settings</a></li>
+              <li><a>Profile</a></li>
+            </ul>
+          </aside>
+        </div>
+
+        <!-- Right Column -->
+        <div class="column">
+          <h1 class="title">Main Content</h1>
+          <p>This is the main area where your content will go. Use Bulma classes to style it further.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

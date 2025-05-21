@@ -1,4 +1,4 @@
-timestamp: 2025-05-15T20:34:09.199515
+timestamp: 2025-05-20T19:35:20.270434
 CREATE TABLE "auth_user"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "username" CHAR(512) UNIQUE,
@@ -12,14 +12,14 @@ CREATE TABLE "auth_user"(
     "past_passwords_hash" TEXT
 );
 success!
-timestamp: 2025-05-15T20:34:09.207866
+timestamp: 2025-05-20T19:35:20.281269
 CREATE TABLE "auth_user_tag_groups"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "tagpath" CHAR(512),
     "record_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  
 );
 success!
-timestamp: 2025-05-15T20:34:09.219517
+timestamp: 2025-05-20T19:35:20.291924
 CREATE TABLE "page"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "title" CHAR(512),
@@ -31,7 +31,7 @@ CREATE TABLE "page"(
     "is_active" CHAR(1)
 );
 success!
-timestamp: 2025-05-15T20:34:09.228375
+timestamp: 2025-05-20T19:35:20.298187
 CREATE TABLE "comment"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "page_id" INTEGER REFERENCES "page" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,

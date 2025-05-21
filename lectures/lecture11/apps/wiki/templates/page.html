@@ -1,0 +1,74 @@
+[[extend 'layout.html']]
+
+
+<!-- Main Content -->
+<section class="section" id="app">
+    <div class="container">
+        <div class="columns">
+            <!-- Left Column -->
+            <div class="column is-one-third">
+                <aside class="menu">
+                    <p class="menu-label">Pages</p>
+                    <ul class="menu-list is-size-7">
+                        <li>
+                            <a href="/wiki/page/new">...new page</a>
+                        </li>
+                        <li v-for="item in pages">
+                            <a v-bind:href="'/wiki/page/'+item.id" v-text="item.title"></a>
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+
+            <!-- Right Column -->
+            <div class="column">
+                <h1 class="title" v-text="page.title"></h1>
+                <div>
+                    <button class="button" v-if="edit_mode" v-on:click="save()">save</button>
+                    <button class="button" v-if="edit_mode && page.id" v-on:click="delete_page()">Delete 🗑</button>
+                    <button class="button" v-if="!edit_mode && user_id" v-on:click="toggle_edit_mode()">Edit</button>
+                    <button class="button" v-if="edit_mode" v-on:click="toggle_edit_mode()">Preview</button>
+                </div>
+                <div v-if="!edit_mode">
+                    <div v-html="converted(page.content)"></div>
+                    <div>
+                        <span class="tag" style="float:right">
+                            Created by {{page.created_by_first_name}}
+                            on {{page.created_on.substring(0,10)}}
+                        </span>
+                    </div>
+                    <div v-if="page.id">
+                        <h4>Comments</h4>
+                        <div v-for="comment in comments" class="box">
+                            <p v-text="comment.content"></p>
+                            <div>
+                                <span class="tag" style="float:right">
+                                    Commented by {{comment.created_by_first_name}}
+                                    on {{comment.created_on.substring(0,10)}}
+                                </span>
+                            </div>        
+                        </div>
+                        <div v-if="user_id">
+                            <textarea class="textarea" placeholder="write a comment..." v-model="new_comment"></textarea>
+                            <button class="button" style="float: right" v-on:click="post_comment()">Post Comment</button>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="edit_mode">
+                    <div class="field">
+                        <label class="label">Title</label>
+                        <div class="control">
+                            <input class="input" type="text" v-model="page.title" /><br />
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Content</label>
+                        <div class="control">
+                            <textarea class="textarea" v-model="page.content"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

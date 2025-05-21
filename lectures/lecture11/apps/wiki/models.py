@@ -1,4 +1,5 @@
 from pydal.validators import *
+from py4web.utils.populate import populate
 from .common import Field, db, auth
 
 db.define_table(
@@ -14,5 +15,9 @@ db.define_table(
     Field("content", "text"),
     auth.signature
 ) # content, author, timestamp
+
+if db(auth_user).count()>0 and db(db.page).count() < 10:
+    populate(db.page, 100)
+    populate(db.comment, 300)
 
 db.commit()
