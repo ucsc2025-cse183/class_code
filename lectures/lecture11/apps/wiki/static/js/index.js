@@ -83,11 +83,22 @@ app.config = {
             let comment = {
                 "content": app.vue.new_comment                
             };
-            ajax("/wiki/api/page/"+app.vue.page.id+"/comment", "POST", comment,function(res){
+            ajax("/wiki/api/page/"+app.vue.page.id+"/comment", "POST", comment, function(res){
+                comment.id = res.id;
                 comment.created_by_first_name = "you";
                 comment.created_on = "";
+                comment.created_by = app.vue.user_id;
                 app.vue.comments.push(comment);
                 app.vue.new_comment = "";
+            });
+        },
+        delete_comment: function(comment_id) {
+            ajax("/wiki/api/page/"+app.vue.page.id+"/comment/" + comment_id, "DELETE", {}, function(res){
+                if (res.num == 1) {
+                    app.vue.comments = app.vue.comments.filter(function(comment){
+                        return comment.id != comment_id;
+                    });
+                }
             });
         },
         load_everything: function() {

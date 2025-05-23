@@ -87,3 +87,10 @@ def post_comment(page_id):
     db.comment.page_id.default = page_id
     ret = db.comment.validate_and_insert(**request.json) # {errors: [], id: 1}
     return ret
+
+@action("api/page/<page_id:int>/comment/<comment_id:int>", method="DELETE")
+@action.uses(auth.user)
+def delete_comment(page_id, comment_id):
+    query = (db.comment.id==comment_id)&(db.comment.created_by==auth.user_id)
+    num = db(query).delete()
+    return {"num": num}

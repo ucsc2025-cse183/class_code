@@ -45,6 +45,7 @@
                                 <span class="tag" style="float:right">
                                     Commented by {{comment.created_by_first_name}}
                                     on {{comment.created_on.substring(0,10)}}
+                                    <span v-if="comment.created_by==user_id" v-on:click="delete_comment(comment.id)" style="cursor:pointer">🗑</span>
                                 </span>
                             </div>        
                         </div>

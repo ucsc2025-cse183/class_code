@@ -16,7 +16,7 @@ db.define_table(
     auth.signature
 ) # content, author, timestamp
 
-if db(auth_user).count()>0 and db(db.page).count() < 10:
+if db(db.auth_user).count()>0 and db(db.page).count() < 10:
     populate(db.page, 100)
     populate(db.comment, 300)
 

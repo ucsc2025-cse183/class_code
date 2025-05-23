@@ -1,0 +1,18 @@
+{
+    "Hello": {
+        "0": "Ciao",
+        "1": "Ciao"
+    },
+    "Hello World from {name}": {
+        "0": "Salve Mondo da {name}"
+    },
+    "dog": {
+        "0": "\ufeffdog",
+        "1": "\ufeffdog",
+        "2": "\ufeffdog"
+    },
+    "thing": {
+        "0": "cosa",
+        "1": "cose"
+    }
+}

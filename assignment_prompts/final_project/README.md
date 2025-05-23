@@ -17,7 +17,8 @@ Part of your grade includes:
 
 You will develop a web-based recipe manager that allows users to create, browse, and share recipes. This is a database-driven application that must include user accounts and support for searching and managing shared ingredients and recipes.
 
-### Minimum Requirements (for a passing grade)
+### Requirements for 50 points
+
 Your app must include the following features:
 
 Database Schema:
@@ -64,7 +65,7 @@ Implementing any of the following will earn you bonus points:
 
 You will build a hotel room reservation web application that allows staff (and optionally customers) to manage rooms, bookings, and customer information. This project emphasizes relational data modeling, user roles, and secure access control.
 
-### Minimum Requirements (for a passing grade)
+### Requirements for 50 points
 
 Your app must include the following database tables and features:
 

@@ -187,7 +187,7 @@ class Assignment(AssignmentBase, Py4web):
         ), "expected the first post to containt #boring"
         assert (
             "#fun" in res["posts"][1]["content"]
-        ), "expected the second post to containt #boring"
+        ), "expected the second post to containt #fun"
         self.add_comment("GET to /api/posts works", 0.4)
 
         res = fetch("GET", self.url + "api/posts?tags=fun", cookies=self.cookies)
