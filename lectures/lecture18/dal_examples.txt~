@@ -1,0 +1,3464 @@
+3457+8285+4949
+import assignment0
+import selenium
+selenium.__version__
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+from selenium import webdriver
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service as ChromeService
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+drive.open("google.com")
+driver.open("google.com")
+driver.urlopen("google.com")
+driver.get("http://google.com")
+def f(x): return x+2
+g = lambda x: x+2
+f(3)
+g(3)
+lambda x: x+2
+import selenium; print(selenium.__version__)
+import yatl
+d = DIV()
+d = yatl.DIV()
+d["_test"] = 1
+print(d)
+d.attributes["x-ref"] = 1
+print(d)
+d.attributes["_x-ref"] = 1
+print(d)
+from yatl import div
+from yatl import DIV
+div = DIV()
+div["_x-ref"] = 1
+print(div)
+0.10 * (15700) + 0.12 * (59850-15700) + 0.22 * (80000 - 59850)
+(0.10 * (15700) + 0.12 * (59850-15700) + 0.22 * (80000 - 59850))/ 80000
+import yaml
+data = yaml.load(open("config.yaml"), yaml.SafeLoader)
+data
+import toml
+import libtoml
+import tomllib
+tomllib.dump(data, open("config.toml", "w"))
+tomllib.save(data, open("config.toml", "w"))
+dir(tomllib)
+which python
+import invoke
+invoke.version
+invoke.__version__
+import version
+import fabric
+fabric.__version__
+import sphix
+import sphinx
+sphinx.version
+sphinx.__version__
+from pydal import DAL, Field
+db = DAL("sqlite://storage.sqlite")
+db
+db.define_table("thing", Field("name"), Field("color"))
+db.thing
+db.thing.insert(name="chair", color="brown")
+db.thing.insert(name="chair", color="red")
+db.thing(id=1)
+row = db.thing(id=1)
+row.name
+row.id
+row.color
+db.commit()
+from pydal import DAL, Field
+db = DAL("sqlite://storage.sqlite")
+db.tables
+db.define_table("thing", Field("name"), Field("color"))
+db.thing(id=1)
+db.thing(id=2)
+db.thing(id=3)
+db.thing.color=="red"
+db(db.thing.color=="red")
+db(db.thing.color=="red")/select()
+db(db.thing.color=="red").select()
+rows=db(db.thing.color=="red").select()
+for row in rows: print(row)
+rows.as_list()
+db(db.thing.color=="red").delete()
+rows=db(db.thing.color=="red").select()
+print(rows)
+from pydal import DAL, Field
+db = DAL("sqlite://storage.sqlite")
+db.define_table("thing", Field("name"), Field("color"), Field('weight', 'integer'))
+db.thing(id=1)
+db(db.thing.id==1).update(weight=30)
+db.thing(id=1)
+db(db.thing.id==1).update(name="CHAR", weight=30)
+db(db.thing.id.belongs([1,2,3])).update(name="CHAR", weight=30)
+print(db(db.thing).select())
+db(db.thing.id==2).delete()
+import pydal
+pydal.version
+pydal.__version__
+from pydal import DAL, Field
+db =DAL()
+db.define_table("thing", Field("name"), Field("color", readable=False, writable=False))
+db.thing.insert(name="chair", color="red")
+db.thing[1]
+a = [{'id': 1, 'name': 'pigeon', 'habitat': '', 'weight': 0.0, 'sightings': 5}, {'id': 2, 'name': 'penguin', 'habitat': 'south_pole', 'weight': 20.0, 'sightings': 2}]
+b = [{'habitat': '', 'id': 1, 'name': 'pigeon', 'sightings': 5, 'weight': 0.0}, {'habitat': 'south pole', 'id': 2, 'name': 'penguin', 'sightings': 2, 'weight': 20.0}]
+a == b
+a[0] == b[0]
+a[1] == b[1]
+a[1]
+b[1]
+for key in a[1]: print key
+for key in a[1]: print(key)
+for key in a[1]: print(key, a[1][key], b[1][key], a[1][key] == b[1][key)
+for key in a[1]: print(key, a[1][key], b[1][key], a[1][key] == b[1][key])
+from pydal import DAL
+db = DAL()
+from pydal import DAL, Field
+db.define_table("t", Field("x", required=True), Field("y", writable=False), Field("a",default=1,update=2), Field("b",writable=False,default=1, update=2))
+db.t.validate_and_insert()
+db.t.validate_and_insert(x=1)
+db.t.validate_and_insert(y=1)
+db.t.validate_and_insert(a=3)
+db.t[3]
+db.t.validate_and_insert(b=3)
+db.t[1].validate_and_update(b=3)
+db(db.t.id==1).validate_and_update(b=3)
+db.t[1]
+db(db.t.id==1).validate_and_update(a=3)
+db(db.t.id==1).validate_and_update(y=2)
+db(db.t.id==1).validate_and_update(x=2)
+from pydal import DAL, Field
+db = DAL()
+db.define_table("t", Field("x", required=True), Field("y", writable=False), Field("a",default=1,update=2), Field("b",writable=False,default=1, update=2))
+db.t.validate_and_insert()
+from pydal import DAL, Field
+db = DAL()
+db.define_table("t", Field("x", required=True), Field("y", writable=False), Field("a",default=1,update=2), Field("b",writable=False,default=1, update=2))
+db.t.validate_and_insert()
+db.t.validate_and_insert(x="name")
+db.t[1]
+db.t.update_and_insert(x="name")
+db(db.t.id==1).update_and_insert(x="name")
+db(db.t.id==1).validate_and_insert(x="name")
+db(db.t.id==1).validate_and_update(x="name")
+db.t[1]
+db(db.t.id==1).validate_and_update(x="name", a=3)
+db.t[1]
+db(db.t.id==1).validate_and_update(x="name", b=3)
+db.t[1]
+from pydal import DAL, Field
+db = DAL()
+db.t.validate_and_insert()
+db.define_table("t", Field("x", required=True), Field("y", writable=False), Field("a",default=1,update=2), Field("b",writable=False,default=1, update=2))
+db.t.validate_and_insert()
+db.t.update_and_insert(x="name")
+db.t.validate_and_insert(x="name")
+db(db.t.id==1).validate_and_update(x="name", a=3)
+db(db.t.id==1).validate_and_update(x="name", b=3)
+db.t[1]
+from pydal import DAL, Field
+db = DAL()
+db.define_table("t", Field("x", required=True), Field("y", writable=False), Field("a",default=1,update=2), Field("b",writable=False,default=1, update=2))
+db.t.validate_and_insert(x="name",b=3)
+from pydal import DAL, Field
+db = DAL()
+db.define_table("t", Field("x", required=True), Field("y", writable=False), Field("a",default=1,update=2), Field("b",writable=False,default=1, update=2))
+db.t.validate_and_insert(x="name",b=3)
+db.t[1]
+db.t.validate_and_insert(x="name",a=3)
+db.t.validate_and_insert(x="name",b=3)
+db(db.t.id==1).validate_and_update(x="name", a=3)
+db.t[1]
+db(db.t.id==1).validate_and_update(x="name", b=3)
+db.t[1]
+db(db.t.id==1).validate_and_update(b=3)
+db.t.b.writable
+from pydal import DAL, Field
+db = DAL()
+db.define_table("t", Field("x", required=True), Field("y", writable=False), Field("a",default=1,update=2), Field("b",writable=False,default=1, update=2))
+db.t.validate_and_insert(x="name")
+from pydal import DAL, Field
+db = DAL()
+db.define_table("t", Field("x", required=True), Field("y", writable=False), Field("a",default=1,update=2), Field("b",writable=False,default=1, update=2))
+db.t.validate_and_insert(x="name")
+db.t.validate_and_insert(x="name",a=1)
+db.t.validate_and_insert(x="name",b=1)
+db.t.update_and_insert(1. x="name2",  a=3)
+db.t.update_and_insert(1, x="name2",  a=3)
+db.t.validate_and_update(1, x="name2",  a=3)
+from pydal import DAL, Field
+db = DAL()
+db.define_table("t", Field("x", required=True), Field("y", writable=False), Field("a",default=1,update=2), Field("b",writable=False,default=1, update=2))
+db.t.validate_and_insert(x="name",b=1)
+db.t.validate_and_insert(x="name",a=1)
+db.t.validate_and_update(1, x="name2",  a=3)
+from pydal import DAL, Field
+db = DAL()
+db.define_table("t", Field("x", required=True), Field("y", writable=False), Field("a",default=1,update=2), Field("b",writable=False,default=1, update=2))
+db.t.validate_and_insert(x="name",b=1)
+db.t.validate_and_insert(x="name",a=1)
+db.t.validate_and_update(1, x="name2",  a=3)
+db.t[1]
+db.t.validate_and_update(1, x="name2",  b=3)
+db.t.validate_and_update(1, x="name2",  y=3)
+db(db.t.id==1).validate_and_update(1, x="name2",  y=3)
+db(db.t.id==1).validate_and_update(x="name2",  y=3)
+db(db.t.id==1).validate_and_update(x="name")
+from pydal import DAL, Field
+db = DAL()
+db.define_table("t", Field("x", required=True), Field("y", writable=False), Field("a",default=1,update=2), Field("b",writable=False,default=1, update=2))
+db.t.validate_and_insert(x="name",a=1)
+db(db.t.id==1).validate_and_update(x="name")
+db(db.t.id==1).validate_and_update(y="name")
+db = DAL()
+from pydal import DAL, Field
+db = DAL()
+db.define_table("t", Field("x", required=True), Field("y", writable=False), Field("a",default=1,update=2), Field("b",writable=False,default=1, update=2))
+db.t.validate_and_insert(x="name",a=1)
+db.t.validate_and_update(1,a=3)
+from pydal import DAL, Field
+db = DAL()
+db.define_table("t", Field("x", required=True), Field("y", writable=False), Field("a",default=1,update=2), Field("b",writable=False,default=1, update=2))
+db.t.validate_and_insert(x="name",a=1)
+db.t.validate_and_update(1,a=3)
+db(db.t.id==1).validate_and_update(1,a=3)
+db(db.t.id==1).validate_and_update(a=3)
+db = DAL()
+from pydal import DAL, Field
+db = DAL()
+db.t.validate_and_insert(x="name",a=1)
+db.define_table("t", Field("x", required=True), Field("y", writable=False), Field("a",default=1,update=2), Field("b",writable=False,default=1, update=2))
+db.t.validate_and_insert(x="name",a=1)
+db(db.t.id==1).validate_and_update(1,a=3)
+db(db.t.id==1).validate_and_update(a=3)
+from pydal import DAL, Field
+db = DAL()
+db.define_table("t", Field("x", required=True), Field("y", writable=False), Field("a",default=1,update=2), Field("b",writable=False,default=1, update=2))
+db.t.validate_and_insert(x="name",a=1)
+db(db.t.id==1).validate_and_update(a=3)
+from pydal import DAL, Field
+db = DAL()
+db.define_table("t", Field("x", required=True), Field("y", writable=False), Field("a",default=1,update=2), Field("b",writable=False,default=1, update=2))
+db.t.validate_and_insert(x="name",a=1)
+db(db.t.id==1).validate_and_update(a=3)
+from pydal import DAL, Field
+db = DAL()
+db.define_table("t", Field("x", required=True), Field("y", writable=False), Field("a",default=1,update=2), Field("b",writable=False,default=1, update=2))
+db.t.validate_and_insert(x="name",a=1)
+db(db.t.id==1).validate_and_update(a=3)
+db(db.t.id==1).validate_and_update(b=3)
+db(db.t.id==1).validate_and_update(y=3)
+db.t.validate_and_update(1, b=3)
+db.t.validate_and_update(1, a=3)
+db.t[1]
+import fpdf
+ pdf = FPDF()
+    pdf.add_page()
+    pdf.set_font("helvetica", "B", 16)
+    pdf.cell(40, 10, "Hello World!")
+ pdf = fpdf.FPDF()
+pdf = fpdf.FPDF()
+pdf.add_page()
+pdf.set_font("helvetica", "B", 16)
+pdf.cell(40, 10, "Hello World!")
+a = pdf.output(dest='S')
+b = a.encode('latin-1')
+print(a)
+print(b)
+typa(a)
+type(a)
+type(b)
+from pydal import DAL, Field
+db = DAL("sqlite://mydb.sqlite")
+db.define_table("person", Field("name"), Field("address"))
+db.person
+db.peron.name
+db.person.name
+db.person.address
+db.person.insert(name="Tim", address="1 main st")
+db.person.insert(name="Tom", address="2 main st")
+db._lastsql
+db(db.person).select()
+print(db(query).select())
+print(db(db.person.name.startswith("T")).select())
+print(db(db.person.name.startswith("Ti")).select())
+print(db(db.person.name.startswith("T")).select())
+print(db(db.person.name.startswith("T")&(db.person.name.endswith("m"))).select())
+print(db(db.person.name.startswith("T")&(db.person.name.endswith("m"))).select(limitby=(0,1))
+print(db(db.person.name.startswith("T")&(db.person.name.endswith("m"))).select(limitby=(0,1)))
+print(db(db.person.name.startswith("T")&(db.person.name.endswith("m"))).select(limitby=(1,2)))
+print(db(db.person.name.startswith("T")&(db.person.name.endswith("m"))).select(limitby=(0,2)))
+print(db(db.person.name.startswith("T")&(db.person.name.endswith("m"))).select(orderby=~db.peron.name))
+print(db(db.person.name.startswith("T")&(db.person.name.endswith("m"))).select(orderby=~db.person.name))
+db.define_table("dog", Field("name"), Field("color"), Field("owner", "reference person"))
+db.dog.insert(name="snoopy", color="white", owner=2)
+db.dog.insert(name="pluto", color="brown", owner=2)
+db.dog.insert(name="bolt", color="black", owner=1)
+row = db(db.dog).select()
+print(row)
+f
+len(row)
+rows = db(db.dog).select()
+for row in rows: print(row)
+for row in rows: print(row.name, row.color)
+for row in rows: print(row.name, row.color, row.owner)
+row.owner
+type(row.owner)
+row.owner + 2
+row.owner.name
+db._lastsql
+query = db.dog.owner == 1
+db(query).select()
+print(db(query).select())
+query = db.dog.owner == db.person.id
+print(db(query).select())
+print(db(query).select(db.dog.name, db.person.name))
+print(db(query).select(db.dog.name, db.person.address))
+for dog in db(db.dog).select():
+	print(dog.name, db.person(id=dog.owner).address)
+print(db(query).select(db.dog.name, db.person.address))
+db._lastsql
+for dog in db(db.dog).select():
+from py4web.utils.form import Form
+print(Form(db.person))
+db.commit()
+from apps.bird_spotter import db
+from .apps.bird_spotter import db
+from apps.bird_spotter import db
+db
+ from bird_spotter.models import db
+from bird_spotter.models import db
+db
+db.tables
+import bird_spotter.models
+from bird_spotter.models import db
+from .bird_spotter.models imprt db
+from .bird_spotter.models import db
+from bird_spotter.models import db
+from datetime impotr datetime
+from datetime import datetime
+datetime.now()
+datetime.now() + 56
+from datetime import timefidd
+from datetime import timediff
+from datetime import timedelta
+datetime.now() + timedelta(10)
+from datetime import timedelta
+dt = timedelta(12)
+dt = timedelta(120)
+df.total_seconds()
+dt.total_seconds()
+dt.seconds
+dir(dt)
+dt.days
+dt = timedelta(seconds=120)
+dt.total_seconds()
+import uuid
+uuid.uuid4()
+str(uuid.uuid4())
+from pydal import DAL, Field
+db = DAL("sqlite://store.sqlite")
+db.define_table("person", Field("name"))
+db.define_table("dog", Field("name"), Field("owner", "reference person"))
+from py4web.utils.populate import populate
+populate(db.person, 10)
+populate(db.dog, 10)
+print(db(db.person).select())
+print(db(db.dog).select())
+dig_names = ["Maurice Turner", "Micheal Ford", "Gordon Diaz"]
+dog_names = ["Maurice Turner", "Micheal Ford", "Gordon Diaz"]
+queries = [db.dog.name==name for name in dog_names]
+query = reduce(lambda a,b: a|b, queries)
+from functools import reduce
+query = reduce(lambda a,b: a|b, queries)
+print(db(query).select())
+query = db.dog.name.belongs(dog_names)
+print(db(query).select())
+for dog in db(query).select(): print(dog)
+for dog in db(query).select(): print(dog.id)
+dig_ids = [dog.id for dog in db(query).select()]
+dog_ids = [dog.id for dog in db(query).select()]
+print(dog_ids)
+for dog in db(query).select(): print(dog.id)
+for dog in db(query).select(): print(dog)
+dog_owner_ids = [dog.owner for dog in db(query).select()]
+dog_owner_ids
+print(db(db.person.id.belongs(dog_owner_id)).select())
+print(db(db.person.id.belongs(dog_owner_ids)).select())
+people = db(db.person.id.belongs([dog.owner for dog in db(db.dog.name.belongs(dog_names)).select())).select()
+people = db(db.person.id.belongs([dog.owner for dog in db(db.dog.name.belongs(dog_names)).select()])).select()
+print(people)
+db._times
+dir(db)
+people = db(db.person.id.belongs(db(db.dog.name.belongs(dog_names)).select(db.dog.owner))).select()
+people = db(db.person.id.belongs(db(db.dog.name.belongs(dog_names))._select(db.dog.owner))).select()
+query = db.person.id.belongs(db(db.dog.name.belongs(dog_names))._select(db.dog.owner))
+print(query)
+people =db(db.person.id.belongs(db(db.dog.name.belongs(dog_names))._select(db.dog.owner))).select()
+print(db._lastsql)
+query = db.person.id == db.dog.owner
+people = db(query).select(db.person)
+query = db.person.id == db.dog.owner
+people = db(query).select(db.person.id, db.person.name)
+people = db(query).select(db.person.ALL)
+db._lastsql
+query = (db.person.id == db.dog.owner)&(db.dog.name.belongs(dog_names))
+people = db(query).select(db.person.ALL)
+db._lastsql
+print(people)
+people = db(query).select(db.person.ALL, groupby=db.person.id)
+print(people)
+print(db(db.person).select())
+print(db(db.dog).select())
+dog_names = ["Harold Powell", "Gordon Diaz"]
+people =db(db.person.id.belongs(db(db.dog.name.belongs(dog_names))._select(db.dog.owner))).select()
+print(people)
+query = (db.person.id == db.dog.owner)&(db.dog.name.belongs(dog_names))
+people = db(query).select(db.person.ALL)
+print(people)
+people = db(query).select(db.person.ALL, groupby=db.person.id)
+print(people)
+people = db(query).select(db.person.ALL, distinct=db.person.id)
+from pydal import DAL, Field
+db = DAL("sqlite://store.sqlite")
+db.define_table("person", Field("name"), Field("age"), Field("color"))
+query = db.person.id>0
+people = db(query).select()
+query &= db.person.name.startswith("M")
+query &= db.person.age<40
+query &= db.person.color.belongs(("red", "green"))
+people = db(query).select()
+dir(db)
+db.executesql("SELECT * FROM person;")
+db.executesql("SELECT * FROM person WHERE name='Tom';")
+db.person.insert(name="John")
+db.executesql("SELECT * FROM person WHERE name='Tom';")
+name = "Tom"
+db.executesql("SELECT * FROM person WHERE name='%s' % name;")
+name = "' AND ''='"
+db.executesql("SELECT * FROM person WHERE name='%s' % name;")
+name = "' OR ''='"
+db.executesql("SELECT * FROM person WHERE name='%s' % name;")
+"SELECT * FROM person WHERE name='%s' % name;
+db.executesql("SELECT * FROM person WHERE name='%s';" % name)
+name = "Tom"
+db.executesql("SELECT * FROM person WHERE name='%s';" % name)
+name = "Roland Harper"
+db.executesql("SELECT * FROM person WHERE name='%s';" % name)
+name = "' OR ''='"
+db.executesql("SELECT * FROM person WHERE name='%s';" % name)
+"SELECT * FROM person WHERE name='%s';" % name
+name = "'; DROP TABLES;"
+"SELECT * FROM person WHERE name='%s';" % name
+db.executesql("SELECT * FROM person WHERE name='?';", name)
+db.
+name = "' OR ''='"
+print(db(db.person.name == name).select())
+db._lastsql
+import twine
+twine.version
+twine.__version__
+import setuptools
+setuptools.__version__
+import py4web
+import pluralize
+from pluralize import Translator
+T = Translator('translations')
+exit
+ls
+exit
+from pluralize import Translator
+T = Translator('translations')
+T("dog")
+x = T("dog")
+print(x)
+T.select('en-US')
+print(x)
+T.select('it')
+print(x)
+from pluralize import Translator
+T = Translator('translations')
+x = T("")
+T.select('en-US')
+print(x)
+T.select('it')
+print(x)
+from pluralize import Translator
+T = Translator('translations')
+x = T("dog")
+print(x)
+T.select('it')
+print(x)
+x = T("dog",n=3)
+help(T)
+print(x.format(n=3))
+T.select('ch')
+print(x.format(n=3))
+import pydal
+from py4web import DAL, Field
+db = DAL(None)
+db.define_table("dog", Field("name"))
+from pydal.tools.tags import Tags
+tog_tags = Tags(db.dog)
+db = DAL("sqlite://storage.sqlite")
+db.define_table("dog", Field("name"))
+from pydal.tools.tags import Tags
+tog_tags = Tags(db.dog)
+db.dog.insert(name="Snoopy")
+db.dog.insert(name="Black")
+db.dog.insert(name="Bob")
+dog_tags = tog_tags
+db.tables
+db.dog.fields
+db.dog_tag_default.fields
+dog_tags.add(2, ["big", "friendly"])
+dog_tags.add(1, ["small", "friendly"])
+print(db(db.dog).select())
+print(db(db.dog.id.belongs(tog_tags.find("friendly")).select())
+print(db(db.dog.id.belongs(tog_tags.find("friendly"))).select())
+print(db(db.dog.id.belongs(tog_tags.find(["friendly", "small"]))).select())
+dog_tags.find(["friendly", "small"])
+print(db(dog_tags.find(["friendly", "small"])).select())
+print(db(dog_tags.find(["friendly"])).select())
+print(db(dog_tags.find(["friendly", "small"], mode="or")).select())
+print(db(dog_tags.find(["friendly", "small"], mode="and")).select())
+print(db(dog_tags.find(["friendly"])&(db.dog.name.startswith("B")).select())
+print(db(dog_tags.find(["friendly"])&(db.dog.name.startswith("B"))).select())
+dog_tags.add(1, "color/red")
+dog_tags.add(2, "color/black")
+dog_tags.add(3, "color/brown")
+db.dog.insert(name="Jack")
+print(db(dog_tags.find(["friendly"])).select())
+print(db(dog_tags.find(["color/red"])).select())
+print(db(dog_tags.find(["color"])).select())
+print(db(dog_tags.find(["color/"])).select())
+print(db(dog_tags.find(["color/red"])).select())
+db.tables
+5*80/60
+6 * 500
+f"{a}".format({"a":"x"})
+f"{a}".format(**{"a":"x"})
+"{a}".format(**{"a":"x"})
+"{a}".format({"a":"x"})
+a = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII"
+import base64
+base64.b64decode(a)
+a = b"iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII"
+base64.b64decode(a)
+base64.b64decode(a+"=")
+base64.b64decode(a+b"=")
+a = b"iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII"
+import base64
+base64.b64decode(a+"=")
+base64.b64decode(a+b"=")
+from pydal import DAL, Field
+from pydal.validators import IS_IN_DB
+db.define_table("thing", Field("name"), format=lambda i: i.name)
+db = DAL()
+db.define_table("thing", Field("name"), format=lambda i: i.name)
+db.thing.insert(name="red")
+db.thing.insert(name="green")
+IS_IN_DB(db, "thing")
+IS_IN_DB(db, "thing").options)(
+IS_IN_DB(db, "thing").options()
+db.thing._format
+from pydal.tools.scehduler import scheduler
+from pydal.tools.scehduler import Scheduler
+from pydal.tools.scheduler import Scheduler
+from pydal in DAL
+from pydal inport DAL
+from pydal import DAL
+db = DAL()
+s = Scheduler(db)
+s.register_task("test", lambda: None)
+db.task_run.name.options()
+db.task_run.name.requires[0].options()
+db.task_run.name.requires.options()
+from pydal import DAL
+from pydal.tools.scheduler import Scheduler
+db = DAL()
+s = Scheduler(db)
+from pydal.tools.scheduler import Scheduler
+from pydal import DAL
+db = DAL()
+s = Scheduler(db)
+from pydal.tools.scheduler import Scheduler
+from pydal import DAL
+db = DAL(None)
+s = Scheduler(db)
+db = DAL()
+s = Scheduler(db)
+from pydal import DAL
+db = DAL()
+from pydal.tools.scheduler import Scheduler
+s = Scheduler(db)
+from pydal import DAL
+from pydal.tools.scheduler import Scheduler
+db = DAL(":memory:")
+db = DAL("sqlite:memory:")
+s = Scheduler(db)
+s.register_task("test", lambda:none)
+db.task_run.name.requires.options()
+db.task_run.name.requires.theset
+from pydal import DAL
+db = DAL("sqlite:memory:")
+from pydal.tools.scheduler import Scheduler
+s = Scheduler(db)
+from pydal import DAL
+from pydal.tools.scheduler import Scheduler
+db = DAL("sqlite:memory:")
+s = Scheduler(db)
+s.register_task("test", lambda:none)
+db.task_run.name.requires.options()
+import re
+re.compile(r"(<\s*/?(script|embed|object|iframe|textarea|input|button).*>)|(<[^>]+ on\w+[^>]+>)", re.IGNO\
+re.compile(r"(<\s*/?(script|embed|object|iframe|textarea|input|button).*>)|(<[^>]+ on\w+[^>]+>)", re.IGNORECASE|re.DOTALL)
+re.compile(r"(<\s*/?(script|embed|object|iframe|textarea|input|button).*>)|(<[^>]+ on\w+[^>]+>)", re.IGNORECASE|re.DOTALL).sub("XXX", "<div>test</div>")
+re.compile(r"(<\s*/?(script|embed|object|iframe|textarea|input|button).*>)|(<[^>]+ on\w+[^>]+>)", re.IGNORECASE|re.DOTALL).sub("XXX", "<div>test</script>")
+re.compile(r"(<\s*/?(script|embed|object|iframe|textarea|input|button).*>)|(<[^>]+ on\w+[^>]+>)", re.IGNORECASE|re.DOTALL).sub("XXX", "<div onclick=''>test</div>")
+161000*0.04
+2015-1971
+from py4web import DAL, Field
+2078000/97*112
+import py4web
+py4web.version
+py4web.__version__
+import py4web
+py4web.__version__
+from py4web import Sessions
+from py4web import Session
+Session.SECRET
+import py4web
+py4web.__version__
+type(None)
+type(None).name
+type(None).__name__
+type(float)
+float.__class__
+float.__class__.__name__
+int.__class__.__name__
+type(2).__name__
+type(None).__name__
+import datetime
+type(datetime.datetime.now()).__name__
+9.11 - 9.9
+((112-56)*420+(112-47.60)*315+(112-59.50)*256+(112-77)*232+(112-77)*2000)
+((112-56)*420+(112-47.60)*315+(112-59.50)*256+(112-77)*232+(112-77)*2000)*0.30
+(2570+1390+1250+2130+1280+380+50+50+420+1390+292+315+256+232+2000+92+234+50+194+114+20+136+46+21)
+(2570+1390+1250+2130+1280+380+50+50+420+1390+292+315+256+232+2000+92+234+50+194+114+20+136+46+21)*112
+40609/360000
+850000*0.051
+850000*0.051/112
+850000*0.051/12
+2e6*0.15
+2e6*0.20
+2e6*0.30
+2e6*0.25
+clear
+import io
+help(io.TextIOWrapper)
+import py4web
+from pydal import DAL, Field
+db = DAL()
+db.define_tablle(Field("name"))
+db.define_tablle('thing', Field("name"))
+db.define_table('thing', Field("name"))
+fields = db.thing.fields
+fields
+fields = db.thing.fields()
+fields
+any(field.type == "id" for field in  db.thing)
+14/12
+14/12*60
+108000*0.04
+108000*0.04*1.22
+177518+13000+105000-5270
+ord("5")
+ord(b"5")
+chr(53)
+str(b"hello wrod")
+from gluon.languages import *
+str(b"hello wrod")
+from gluon.languages import *
+T = TranslatorFactory("applications/welcone/languages", "it")
+T.accepted_language
+T.force("it")
+T.accepted_language
+T.current_languages
+T = TranslatorFactory("applications/welcome/languages", "it")
+T.current_languages
+T = TranslatorFactory("applications/welcome/", "it")
+T.current_languages
+T.get_possible_languages()
+T = TranslatorFactory("applications/welcome/languages", "it")
+T.get_possible_languages()
+T.current_language
+T.accepted_language
+T("Hello World")
+str(T("Hello World"))
+T("Hello World").T
+T("Hello World").T.accepted_language
+T("Hello World").T.translate
+T("Hello World").T.translate("x")
+T("Hello World").T.translate("x", ())
+T("Hello World").T.translate("Hello World", ())
+T("Hello World").T.value
+T("Hello World").T.t
+T("Hello World").T.t["Hello World"]
+T("Hello World").T.t
+T("Hello World").T.accepted_language
+from gluon.languages import *
+T("Hello World").T.accepted_language
+T = TranslatorFactory("applications/welcone/languages", "it")
+from gluon.languages import *
+T = TranslatorFactory("applications/welcone/languages", "it")
+from gluon.languages import *
+T = TranslatorFactory("applications/welcone/languages", "it")
+from gluon.languages import *
+T = TranslatorFactory("applications/welcone/languages", "it")
+from gluon.languages import *
+T = TranslatorFactory("applications/welcone/languages", "it")
+T = TranslatorFactory("applications/welcone/languages")
+T = TranslatorFactory("applications/welcone/languages", "it")
+from gluon.languages import *
+T = TranslatorFactory("applications/welcone/languages", "it")
+from gluon.languages import *
+T = TranslatorFactory("applications/welcone/languages", "it")
+from gluon.languages import *
+T = TranslatorFactory("applications/welcone/languages", "it")
+T = TranslatorFactory("applications/welcome/languages", "it")
+from gluon.languages import *
+T = TranslatorFactory("applications/welcome/languages", "it")
+from gluon.languages import *
+T = TranslatorFactory("applications/welcome/languages", "it")
+from gluon.languages import *
+T = TranslatorFactory("applications/welcome/languages", "it")
+T.t
+T.translate("Salve Mondo", {})
+T.translate("Hello World", {})
+T.t
+T = TranslatorFactory("applications/welcome/languages", "en")
+from gluon.languages import *
+T = TranslatorFactory("applications/welcome/languages", "en")
+t.force("it")
+T.force("it")
+T.t
+T.t.keys()
+list(T.t)
+T.t.
+T.t
+T.t.keys()
+T.t["__corrupted__"]
+T.t["__corrupted__"]["Salve Mondo"]
+from gluon.languages import *
+T.t["__corrupted__"]["Salve Mondo"]
+from gluon.languages import *
+T = TranslatorFactory("applications/welcome/languages", "en")
+T.force("it")
+T = TranslatorFactory("applications/welcome/languages", "en")
+T.force("it")
+T
+T = TranslatorFactory("applications/welcome/languages", "en")
+from gluon.languages import *
+T = TranslatorFactory("applications/welcome/languages", "en")
+T.force("it")
+from gluon.languages import *
+T = TranslatorFactory("applications/welcome/languages", "en")
+from gluon.languages import *
+T = TranslatorFactory("applications/welcome/languages", "en")
+T.force("it")
+T("Salve Mondo")
+T("Hello World")
+str(T("Hello World"))
+1300+147
+(1300+147)*1.25
+(1300+147)*1.25 + 600*1.25
+Confirm Password
+from gluon.contrib.webclient import WebClient
+import Crypto
+Crypto.__file__
+from gluon.contrib.webclient import WebClient
+client = WebClient("http://127.0.0.1:8000/welcome/default/")
+client.get("index")
+data = dict(
+            first_name="Homer",
+            last_name="Simpson",
+            email="homer@web2py.com",
+            password="test1234!",
+            password_two="test1234!",
+            _formname="register",
+        )
+res = client.post("user/register", data=data)
+res.text
+client.text
+open("/tmp/index.html", "w").write(client.text)
+import rocket3
+rocket3.version
+rocket3.__version__
+from firebase_admin import db
+import firebase_admin
+import firestore_admin
+import firestore
+from google.cloud import firestore
+from google.cloud import firebase
+import firebase_admin
+import uuid
+uuid.uuid4()
+str(uuid.uuid4())
+import pydal
+from pydal import DAL
+db = DAL("firestore:cred=testing-429503-805df6b2752b.json
+db = DAL("firestore:cred=testing-429503-805df6b2752b.json")
+db = DAL("firestore://cred=testing-429503-805df6b2752b.json")
+from pydal import DAL
+db = DAL("firestore://cred=testing-429503-805df6b2752b.json")
+from pydal import DAL
+db = DAL("firestore://cred=testing-429503-805df6b2752b.json")
+from pydal import DAL
+db = DAL("firestore://cred=testing-429503-805df6b2752b.json")
+from pydal import DAL, Field
+db.define_table("thing", Field("name"))
+db.thing.insert(name="chair")
+from pydal import DAL, Field
+db = DAL("firestore://cred=testing-429503-805df6b2752b.json")
+db.define_table("thing", Field("name"))
+db.thing.insert(name="chair")
+from pydal import DAL, Field
+db = DAL("firestore://cred=testing-429503-805df6b2752b.json")
+db.define_table("thing", Field("name"))
+db.thing.insert(name="chair")
+from pydal import DAL, Field
+db = DAL("firestore://cred=testing-429503-805df6b2752b.json")
+db.define_table("thing", Field("name"))
+db.thing.insert(name="chair")
+from pydal import DAL, Field
+db = DAL("firestore://cred=testing-429503-805df6b2752b.json")
+db.define_table("thing", Field("name"))
+db.thing.insert(name="chair")
+from google.cloud.firestore_v1.base_query import FieldFilter, Or
+Or([FieldFilter("x", "==" 2), FieldFilter("y", "==", 3))
+x = Or([FieldFilter("x", "==", 2), FieldFilter("y", "==", 3))
+x = Or([FieldFilter("x", "==", 2), FieldFilter("y", "==", 3)])
+dir(x)
+x.filters
+from google.cloud.firestore_v1.base_query import FieldFilter, Or
+FieldFilter("a", "==", 34)
+from google.cloud.firestore_v1.base_query import FieldFilter, Or
+x = FilterField("a", "==", "b")
+x = FieldFilter("a", "==", "b")
+x
+dir(x)
+x.field_path
+x.op_string
+x.value
+import random, time
+int(1000000000*time.time() + random.randint(0, 999999))
+int(1000000000000*time.time() + random.randint(0, 999999999))
+int(1000000000000*time.time())
+int(1e12*time.time())
+int(1e12*time.time() + random.randint(0,999999999)
+int(1e12*time.time() + random.randint(0,999999999))
+int(1e15*time.time() + random.randint(0,999999999999))
+int(1e18*time.time() + random.randint(0,999999999999999))
+import os
+os.urandom(size)
+os.urandom(15))
+os.urandom(15)
+int.from_bytes(os.urandom(15))
+int.from_bytes(os.urandom(6))
+999999999999999
+int.from_bytes(os.urandom(6))
+int.from_bytes(os.urandom(8))
+int.from_bytes(os.urandom(7))
+int.from_bytes(os.urandom(8))
+len(str(int.from_bytes(os.urandom(8))))
+int.from_bytes(os.urandom(8)) % 1000000000000000000000
+int(time.time() * int(1e21) + int.from_bytes(os.urandom(8)) % int(1e18))
+from google.cloud.firestore_v1 import aggregation
+    from google.cloud.firestore_v1.base_query import FieldFilter
+from google.cloud.firestore_v1 import FieldPath
+from google.cloud.firestore_v1.base_query import FieldPath
+from google.cloud.firestore_v1 import field_path
+dir(field_path)
+from google.cloud.firestore_v1.field_path import FieldPath
+FieldPath.documentId()
+FieldPath.document_id()
+from google.cloud.firestore_v1 import Key
+import firebase_amdin
+import firebase_admin
+import firestore_admin
+for k in range(100000): print(k)
+exit
+a, b = 1,1
+while True:
+	a,b = a+b,b
+	print(a)
+a, b = 1,1
+while True:
+	a,b = a+b
+	print(b)
+a, b = 1,1
+while True:
+import random
+while True: print(random.random())
+from pydal import DAL, Field
+db=DAL("sqlite://storage.sqlite")
+db.define_table("audit_log", Field("request_timestamp"), Field("controller"))
+db.audit_log.insert(request_timestamp=1, controller="x")
+db.audit_log.insert(request_timestamp=1, controller="y")
+db.audit_log.insert(request_timestamp=1, controller="z")
+db.audit_log.insert(request_timestamp=2, controller="x")
+db.audit_log.insert(request_timestamp=2, controller="y")
+db.audit_log.insert(request_timestamp=3, controller="x")
+db.audit_log.insert(request_timestamp=4, controller="x")
+db().select(db.audit_log.count(), db.audit_log.controller, orderby=db.audit_log.request_timestamp)
+db().select(db.audit_log.id.count(), db.audit_log.controller, orderby=db.audit_log.request_timestamp)
+db().select(db.audit_log.controller, orderby=db.audit_log.request_timestamp)
+db().select(db.audit_log.count(), db.audit_log.controller, orderby=db.audit_log.request_timestamp, groupby=db.audit_log.controller)
+db().select(db.audit_log.id.count(), db.audit_log.controller, orderby=db.audit_log.request_timestamp, groupby=db.audit_log.controller)
+db().select(db.audit_log.id.count(), db.audit_log.controller, orderby=db.audit_log.request_timestamp, groupby=db.audit_log.controller).as_list()
+db().select(db.audit_log.id.count(), db.audit_log.controller, orderby=db.audit_log.id.count(), groupby=db.audit_log.controller, limitby=(0,10)).as_list()
+db().select(db.audit_log.id.count(), db.audit_log.controller, orderby=db.audit_log.id.count(), groupby=db.audit_log.controller, limitby=(0,10)).sort(lambda x: x._extra[db.audit_log.id.count()])
+db().select(db.audit_log.id.count(), db.audit_log.controller, orderby=db.audit_log.id.count(), groupby=db.audit_log.controller, limitby=(0,10)).sort(lambda x: x._extra[db.audit_log.id.count()]).as_list()
+db().select(db.audit_log.id.count(), db.audit_log.controller, orderby=db.audit_log.id.count(), groupby=db.audit_log.controller, limitby=(0,10)).sort(lambda x: -x._extra[db.audit_log.id.count()]).as_list()
+db().select(db.audit_log.id.count(), db.audit_log.controller, orderby=db.audit_log.controller|db.audit_log.id.count(), groupby=db.audit_log.controller, limitby=(0,10)).sort(lambda x: -x._extra[db.audit_log.id.count()]).as_list()
+rows = db().select(db.audit_log.id.count(), db.audit_log.controller, orderby=db.audit_log.controller|db.audit_log.id.count(), groupby=db.audit_log.controller, limitby=(0,10)).sort(lambda x: -x._extra[db.audit_log.id.count()]).as_list()
+[row["audit_log"]["controller"], row["_extra"][db.audit_log.id.count()] for row in rows]
+[(row["audit_log"]["controller"], row["_extra"][db.audit_log.id.count()]) for row in rows]
+[(row["audit_log"]["controller"], row["_extra"][str(db.audit_log.id.count())]) for row in rows]
+db()._select(db.audit_log.id.count(), db.audit_log.controller, orderby=db.audit_log.controller|db.audit_log.id.count(), groupby=db.audit_log.controller, limitby=(0,10)).sort(lambda x: -x._extra[db.audit_log.id.count()]).as_list()
+db()._select(db.audit_log.id.count(), db.audit_log.controller, orderby=db.audit_log.controller|db.audit_log.id.count(), groupby=db.audit_log.controller, limitby=(0,10))
+db().select(db.audit_log.id.count(), db.audit_log.controller, orderby=db.audit_log.controller|db.audit_log.id.count(), groupby=db.audit_log.controller).sort(lambda x: -x._extra[db.audit_log.id.count()])[:10].as_list()
+def f(table, col, size): return db().select(table.id.count(), table[col], orderby=table[col]|table.id.count(), groupby=table[col]).sort(lambda x: -x._extra[table.id.count()])[:size].as_list()
+f(db.audit_log, "controller", 10)
+def f(table, col, size): return db().select(table.id.count(), table[col], orderby=table[col]|table.id.count(), groupby=table[col], limitby=(0, size)).as_list()
+f(db.audit_log, "controller", 10)
+f(db.audit_log, "controller", 2)
+def f(table, col, size): return [(row[table.tablename][col], row["_extra"][str(table.id.cound()]) for row in db().select(table.id.count(), table[col], orderby=table[col]|table.id.count(), groupby=table[col], limitby=(0, size))]
+def f(table, col, size): return [(row[table.tablename][col], row["_extra"][str(table.id.cound())]) for row in db().select(table.id.count(), table[col], orderby=table[col]|table.id.count(), groupby=table[col], limitby=(0, size))]
+f(db.audit_log, "controller", 2)
+def f(table, col, size): return [(row[table._tablename][col], row["_extra"][str(table.id.cound())]) for row in db().select(table.id.count(), table[col], orderby=table[col]|table.id.count(), groupby=table[col], limitby=(0, size))]
+f(db.audit_log, "controller", 2)
+def f(table, col, size): return [(row[table._tablename][col], row["_extra"][str(table.id.count())]) for row in db().select(table.id.count(), table[col], orderby=table[col]|table.id.count(), groupby=table[col], limitby=(0, size))]
+f(db.audit_log, "controller", 2)
+1044+28+480
+import types
+isinstance([], types.GeneratorType)
+isinstance([x for x in range(10)], types.GeneratorType)
+isinstance((x for x in range(10)), types.GeneratorType)
+isinstance((1,2,3)), types.GeneratorType)
+isinstance((1,2,3), types.GeneratorType)
+isinstance({1,2,3}, types.GeneratorType)
+isinstance({1,2,3}, types.ListType)
+isinstance({1,2,3}, set)
+isinstance({1,2,3}, list)
+isinstance(123, types.Integaral))
+isinstance(123, types.Integaral)
+isinstance(123, types.Integral)
+isinstance(123, int)
+import aifc
+import array
+import atexit
+import base64
+import BaseHTTPServer
+import Bastion
+import binascii
+import binhex
+import bisect
+import bz2
+import calendar
+import chunk
+import cmath
+import cmd
+import code
+import codecs
+import codeop
+import collections
+import colorsys
+import ConfigParser
+import contextlib
+import collections
+import pickle
+import io
+import csv
+import ctypes
+import datetime
+import decimal
+import difflib
+import dircache
+import dis
+import doctest
+import email
+import email.charset
+import email.encoders
+import email.errors
+import email.generator
+import email.header
+import email.iterators
+import email.message
+import email.mime
+import email.mime.audio
+import email.mime.base
+import email.mime.image
+import email.mime.message
+import email.mime.multipart
+import email.mime.nonmultipart
+import email.mime.text
+import email.parser
+import email.utils
+import encodings.idna
+import errno
+import exceptions
+import filecmp
+import fileinput
+import fnmatch
+import formatter
+import fpformat
+import ftplib
+import functools
+import gc
+import getopt
+import getpass
+import gettext
+import glob
+import gzip
+import hashlib
+import heapq
+import hmac
+import hotshot
+import hotshot.stats
+import htmlentitydefs
+import imaplib
+import imghdr
+import imp
+import inspect
+import itertools
+import keyword
+import linecache
+import locale
+import logging
+import macpath
+import mailbox
+import mailcap
+import marshal
+import math
+import mimetools
+import mimetypes
+import mmap
+import modulefinder
+import mutex
+import netrc
+import new
+import nntplib
+import operator
+import optparse
+import os
+import parser
+import pdb
+import pickle
+import pickletools
+import pkgutil
+import platform
+import poplib
+import pprint
+import py_compile
+import pyclbr
+import pydoc
+import Queue
+import quopri
+import random
+import re
+import repr
+import rexec
+import rfc822
+import rlcompleter
+import robotparser
+import runpy
+import sched
+import select
+import sgmllib
+import shelve
+import shlex
+import shutil
+import signal
+import SimpleHTTPServer
+import SimpleXMLRPCServer
+import site
+import smtpd
+import smtplib
+import sndhdr
+import socket
+import SocketServer
+import sqlite3
+import stat
+import statvfs
+import string
+import StringIO
+import stringprep
+import struct
+import subprocess
+import sunau
+import symbol
+import tabnanny
+import tarfile
+import telnetlib
+import tempfile
+import textwrap
+import thread
+import threading
+import time
+import timeit
+import Tix
+import Tkinter
+import token
+import tokenize
+import trace
+import traceback
+import types
+import unicodedata
+import unittest
+import urllib
+import urllib2
+import urlparse
+import uuid
+import warnings
+import wave
+import weakref
+import webbrowser
+import whichdb
+import wsgiref
+import wsgiref.handlers
+import wsgiref.headers
+import wsgiref.simple_server
+import wsgiref.util
+import wsgiref.validate
+import xdrlib
+import xml.dom
+import xml.dom.minidom
+import xml.dom.pulldom
+import xml.etree.ElementTree
+import xml.parsers.expat
+import xml.sax
+import xml.sax.handler
+import xml.sax.saxutils
+import xml.sax.xmlreader
+import xmlrpclib
+import zipfile
+import zipimport
+import zlib
+import mhlib
+import MimeWriter
+import mimify
+import multifile
+import sets
+import argparse
+import json
+import multiprocessing
+import hashlib
+import uuid
+import builtins
+import os
+import sys
+import aifc
+import array
+import atexit
+import base64
+import binascii
+import bisect
+import bz2
+import calendar
+import chunk
+import cmath
+import cmd
+import code
+import codecs
+import codeop
+import collections
+import colorsys
+import contextlib
+import collections
+import pickle
+import io
+import csv
+import ctypes
+import datetime
+import decimal
+import difflib
+import dis
+import doctest
+import email
+import email.charset
+import email.encoders
+import email.errors
+import email.generator
+import email.header
+import email.iterators
+import email.message
+import email.mime
+import email.mime.audio
+import email.mime.base
+import email.mime.image
+import email.mime.message
+import email.mime.multipart
+import email.mime.nonmultipart
+import email.mime.text
+import email.parser
+import email.utils
+import encodings.idna
+import errno
+import filecmp
+import fileinput
+import fnmatch
+import ftplib
+import functools
+import gc
+import getopt
+import getpass
+import gettext
+import glob
+import gzip
+import hashlib
+import heapq
+import hmac
+import imaplib
+import imghdr
+import inspect
+import itertools
+import keyword
+import linecache
+import locale
+import logging
+import mailbox
+import mailcap
+import marshal
+import math
+import mimetypes
+import mmap
+import modulefinder
+import netrc
+import nntplib
+import operator
+import optparse
+import os
+import pdb
+import pickle
+import pickletools
+import pkgutil
+import platform
+import poplib
+import pprint
+import py_compile
+import pyclbr
+import pydoc
+import queue
+import quopri
+import random
+import re
+import rlcompleter
+import runpy
+import sched
+import select
+import shelve
+import shlex
+import shutil
+import signal
+import site
+import smtplib
+import sndhdr
+import socket
+import sqlite3
+import stat
+import string
+import stringprep
+import struct
+import subprocess
+import symbol
+import tabnanny
+import tarfile
+import tempfile
+import textwrap
+import threading
+import time
+import timeit
+import tkinter
+import token
+import tokenize
+import trace
+import traceback
+import types
+import unicodedata
+import unittest
+import urllib
+import uuid
+import warnings
+import wave
+import weakref
+import webbrowser
+import wsgiref
+import wsgiref.handlers
+import wsgiref.headers
+import wsgiref.simple_server
+import wsgiref.util
+import wsgiref.validate
+import xml.dom
+import xml.dom.minidom
+import xml.dom.pulldom
+import xml.etree.ElementTree
+import xml.parsers.expat
+import xml.sax
+import xml.sax.handler
+import xml.sax.saxutils
+import xml.sax.xmlreader
+import zipfile
+import zipimport
+import zlib
+import argparse
+import json
+import multiprocessing
+import hashlib
+import builtins
+import os
+import sys
+import array
+import atexit
+import base64
+import binascii
+import bisect
+import bz2
+import calendar
+import chunk
+import cmath
+import cmd
+import code
+import codecs
+import codeop
+import collections
+import colorsys
+import contextlib
+import collections
+import pickle
+import io
+import csv
+import ctypes
+import datetime
+import decimal
+import difflib
+import dis
+import doctest
+import email
+import email.charset
+import email.encoders
+import email.errors
+import email.generator
+import email.header
+import email.iterators
+import email.message
+import email.mime
+import email.mime.audio
+import email.mime.base
+import email.mime.image
+import email.mime.message
+import email.mime.multipart
+import email.mime.nonmultipart
+import email.mime.text
+import email.parser
+import email.utils
+import encodings.idna
+import errno
+import filecmp
+import fileinput
+import fnmatch
+import ftplib
+import functools
+import gc
+import getopt
+import getpass
+import gettext
+import glob
+import gzip
+import hashlib
+import heapq
+import hmac
+import imaplib
+import inspect
+import itertools
+import keyword
+import linecache
+import locale
+import logging
+import mailbox
+import marshal
+import math
+import mimetypes
+import mmap
+import modulefinder
+import netrc
+import operator
+import optparse
+import os
+import pdb
+import pickle
+import pickletools
+import pkgutil
+import platform
+import poplib
+import pprint
+import py_compile
+import pyclbr
+import pydoc
+import queue
+import quopri
+import random
+import re
+import rlcompleter
+import runpy
+import sched
+import select
+import shelve
+import shlex
+import shutil
+import signal
+import site
+import smtplib
+import socket
+import sqlite3
+import stat
+import string
+import stringprep
+import struct
+import subprocess
+import tabnanny
+import tarfile
+import tempfile
+import textwrap
+import threading
+import time
+import timeit
+try:
+    import tkinter
+except ImportError:
+    pass
+import token
+import tokenize
+import trace
+import traceback
+import types
+import unicodedata
+import unittest
+import urllib
+import uuid
+import warnings
+import wave
+import weakref
+import webbrowser
+import wsgiref
+import wsgiref.handlers
+import wsgiref.headers
+import wsgiref.simple_server
+import wsgiref.util
+import wsgiref.validate
+import xml.dom
+import xml.dom.minidom
+import xml.dom.pulldom
+import xml.etree.ElementTree
+import xml.parsers.expat
+import xml.sax
+import xml.sax.handler
+import xml.sax.saxutils
+import xml.sax.xmlreader
+import zipfile
+import zipimport
+import zlib
+import argparse
+import json
+import multiprocessing
+import hashlib
+import uuid
+import builtins
+import os
+import sys
+import array
+import atexit
+import base64
+import binascii
+import bisect
+import bz2
+import calendar
+import cmath
+import cmd
+import code
+import codecs
+import codeop
+import collections
+import colorsys
+import contextlib
+import collections
+import pickle
+import io
+import csv
+import ctypes
+import datetime
+import decimal
+import difflib
+import dis
+import doctest
+import email
+import email.charset
+import email.encoders
+import email.errors
+import email.generator
+import email.header
+import email.iterators
+import email.message
+import email.mime
+import email.mime.audio
+import email.mime.base
+import email.mime.image
+import email.mime.message
+import email.mime.multipart
+import email.mime.nonmultipart
+import email.mime.text
+import email.parser
+import email.utils
+import encodings.idna
+import errno
+import filecmp
+import fileinput
+import fnmatch
+import ftplib
+import functools
+import gc
+import getopt
+import getpass
+import gettext
+import glob
+import gzip
+import hashlib
+import heapq
+import hmac
+import imaplib
+import inspect
+import itertools
+import keyword
+import linecache
+import locale
+import logging
+import mailbox
+import marshal
+import math
+import mimetypes
+import mmap
+import modulefinder
+import netrc
+import operator
+import optparse
+import os
+import pdb
+import pickle
+import pickletools
+import pkgutil
+import platform
+import poplib
+import pprint
+import py_compile
+import pyclbr
+import pydoc
+import queue
+import quopri
+import random
+import re
+import rlcompleter
+import runpy
+import sched
+import select
+import shelve
+import shlex
+import shutil
+import signal
+import site
+import smtplib
+import socket
+import sqlite3
+import stat
+import string
+import stringprep
+import struct
+import subprocess
+import tabnanny
+import tarfile
+import tempfile
+import textwrap
+import threading
+import time
+import timeit
+try:
+    import tkinter
+except Exception:
+    ...
+import token
+import tokenize
+import trace
+import traceback
+import types
+import unicodedata
+import unittest
+import urllib
+import uuid
+import warnings
+import wave
+import weakref
+import webbrowser
+import wsgiref
+import wsgiref.handlers
+import wsgiref.headers
+import wsgiref.simple_server
+import wsgiref.util
+import wsgiref.validate
+import xml.dom
+import xml.dom.minidom
+import xml.dom.pulldom
+import xml.etree.ElementTree
+import xml.parsers.expat
+import xml.sax
+import xml.sax.handler
+import xml.sax.saxutils
+import xml.sax.xmlreader
+import zipfile
+import zipimport
+import zlib
+import argparse
+import json
+import multiprocessing
+import hashlib
+import uuid
+import builtins
+import os
+import sys
+import array
+import atexit
+import base64
+import binascii
+import bisect
+import bz2
+import calendar
+import cmath
+import cmd
+import code
+import codecs
+import codeop
+import collections
+import colorsys
+import contextlib
+import collections
+import pickle
+import io
+import csv
+import ctypes
+import datetime
+import decimal
+import difflib
+import dis
+import doctest
+import email
+import email.charset
+import email.encoders
+import email.errors
+import email.generator
+import email.header
+import email.iterators
+import email.message
+import email.mime
+import email.mime.audio
+import email.mime.base
+import email.mime.image
+import email.mime.message
+import email.mime.multipart
+import email.mime.nonmultipart
+import email.mime.text
+import email.parser
+import email.utils
+import encodings.idna
+import errno
+import filecmp
+import fileinput
+import fnmatch
+import ftplib
+import functools
+import gc
+import getopt
+import getpass
+import gettext
+import glob
+import gzip
+import hashlib
+import heapq
+import hmac
+import imaplib
+import inspect
+import itertools
+import keyword
+import linecache
+import locale
+import logging
+import mailbox
+import marshal
+import math
+import mimetypes
+import mmap
+import modulefinder
+import netrc
+import operator
+import optparse
+import os
+import pdb
+import pickle
+import pickletools
+import pkgutil
+import platform
+import poplib
+import pprint
+import py_compile
+import pyclbr
+import pydoc
+import queue
+import quopri
+import random
+import re
+import rlcompleter
+import runpy
+import sched
+import select
+import shelve
+import shlex
+import shutil
+import signal
+import site
+import smtplib
+import socket
+import sqlite3
+import stat
+import string
+import stringprep
+import struct
+import subprocess
+import tabnanny
+import tarfile
+import tempfile
+import textwrap
+import threading
+import time
+import timeit
+import token
+import tokenize
+import trace
+import traceback
+import types
+import unicodedata
+import unittest
+import urllib
+import uuid
+import warnings
+import wave
+import weakref
+import webbrowser
+import wsgiref
+import wsgiref.handlers
+import wsgiref.headers
+import wsgiref.simple_server
+import wsgiref.util
+import wsgiref.validate
+import xml.dom
+import xml.dom.minidom
+import xml.dom.pulldom
+import xml.etree.ElementTree
+import xml.parsers.expat
+import xml.sax
+import xml.sax.handler
+import xml.sax.saxutils
+import xml.sax.xmlreader
+import zipfile
+import zipimport
+import zlib
+import argparse
+import json
+import multiprocessing
+import hashlib
+import uuid
+try:
+    import tkinter
+except Exception:
+    ...
+import pyexpat
+import web2py
+import gluon
+import web2py
+import gluon
+12000/3000
+12000/35000
+import grpc
+from grpc._cython import cygrpc
+import google.ckout
+import google.cloud
+dir(google.cloud)
+from google.cloud import firestore
+from pydal import DAL, Field
+import datetime
+import os
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "testing-429503-805df6b2752b.json"
+db = DAL("firestore")
+db.define_table("thing", Field("name"), Field("dt", "datetime"))
+db.define_table("color", Field("name"), Field("thing_id", "reference thing"))
+db._adapter
+db._adapter.expand
+db._adapter.expand(123, "reference")
+q = db.color.thing_id == 123
+q
+dir(q)
+q.first
+q.second
+q.op
+q
+q.__class__
+str(q)
+repr(q)
+db._adapter.expand(q)
+p = db._adapter.expand(q)
+dir(p)
+p.value
+p.op_string
+db(db.thing)(db.thing.id==1).select()
+db(db.thing.id==1).select()
+db(db.thing).select()
+db(db.thing).select().as_list()
+db(db.color).select().as_list()
+from pydal import DAL, Field
+import datetime
+import os
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "testing-429503-805df6b2752b.json"
+db = DAL("firestore")
+db.define_table("thing", Field("name"), Field("dt", "datetime"))
+db.define_table("color", Field("name"), Field("thing_id", "reference thing"))
+from pydal import DAL, Field
+import datetime
+import os
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "testing-429503-805df6b2752b.json"
+db = DAL("firestore")
+db.define_table("thing", Field("name"), Field("dt", "datetime"))
+db.define_table("color", Field("name"), Field("thing_id", "reference thing"))
+(db.thing.name=="chair")&(db.thing.name=="chair")&(db.thing.name=="chair")
+from pydal import DAL, Field
+import datetime
+import os
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "testing-429503-805df6b2752b.json"
+db = DAL("firestore")
+db.define_table("thing", Field("name"), Field("dt", "datetime"))
+db.define_table("color", Field("name"), Field("thing_id", "reference thing"))
+db((db.color.name=="red")&(db.color.name=="red")).select()
+db((db.color.name=="red")&(db.color.name=="blue")).select()
+db((db.color.name=="red")|(db.color.name=="blue")).select()
+db((db.color.name=="red")|((db.color.name=="red")&(db.color.name=="blue"))).select()
+db((db.color.name=="red")&((db.color.name=="red")|(db.color.name=="blue"))).select()
+f = (db.color.name=="red")|(db.color.name=="blue")
+self._adapter.expand(f)
+db._adapter.expand(f)
+dir(db._adapter.expand(f))
+db._adapter.expand(f).operator
+f = (db.color.name=="red")&(db.color.name=="blue")
+db._adapter.expand(f).operator
+import base64
+base64.b64decode("123")
+base64.b64encode("123")
+base64.b64encode("123".encode("utf8"))
+base64.b64decode((base64.b64encode("123".encode("utf8")))
+base64.b64decode(base64.b64encode("123".encode("utf8")))
+400000*0.5*0.20
+(400000*0.5 - 16000)*0.20
+(400000*0.5 - 16000)*0.20-15000
+2300*185
+2300*185 * 1.2
+(2420000 + 2300*185) * 1.2
+(2420000 + 2300*185) * 1.3
+(2420000 + 2300*185) * 1.3 * 0.7
+(2420000 + 2300*185) * 1.3 * 0.75
+map(int, "3.4.5.hello".split(".")[:3])
+list(map(int, "3.4.5.hello".split(".")[:3]))
+list(map(int, "3.4.5.hello".split(".")[:3])) < [4, 4, 5]
+list(map(int, "3.4.5.hello".split(".")[:3])) < [3, 4, 5]
+list(map(int, "3.4.5.hello".split(".")[:3])) < [3, 4, 6]
+3255 + 77*40
+77*40
+3255 + 77 * 40
+420000*(1-0.20-0.038-0.09)
+420000*(1-0.70*(0.20-0.038-0.09))
+420000*(1-0.70*(0.20+0.038+0.09))
+9*6
+import dattime
+import datetime
+datetime.datetime.now(datetime.timezone.utc)
+print(datetime.datetime.now(datetime.timezone.utc))
+print(datetime.datetime.now(datetime.timezone.utc).isoformat())
+(20+30)*2*(90/12)*1.4
+a = datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)
+import datetime
+datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)
+a = datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)
+b = datetime.timedelta(seconds=10)
+a + b < a
+1650*(1.04)**2
+1650*(1.03)**2
+1650*(1.02)
+1650
+1650 * 1.03
+1650 * 1.05
+import pydal
+from pydal import Field, DAL, Expression
+from pydal import Field, DAL
+from pydal.objects import Expression
+db.define_table('x', Field("a"))
+db = DAL()
+db.define_table('x', Field("a"))
+db.a._insert(a=Expression("xyz"))
+db.x._insert(a=Expression("xyz"))
+help Expression
+help(Expression)
+from py4web.utils.form import Form
+from py4web.core import Field
+form = Form([Field("name")])
+from py4web.utils.form import Form
+from py4web.core import Field
+form = Form([Field("name")])
+from py4web.utils.form import Form
+from py4web.core import Field
+form = Form([Field("name")])
+form.structure
+from yatl.helpers import DIV
+form.structure.append(DIV(**{"class="cf-turnstile"
+  data-sitekey="yourSitekey"
+form.structure.append(DIV(**{"_class": "cf-turnstile", "_data-sitekey":"yourSitekey", "_data-callback": "javascriptCallback"}))
+print(str(form))
+329.08 * 12 - 0.06
+1580 * 12
+319.70*12
+329.08*12
+2000*12 + 75*2+45*3
+2367.33+1739.65
+1671.82+1468.52
+1.12*98500 1.03*105000
+1.12*98500 , 1.03*105000
+1.12*98500 - 1.03*105000
+1.04*105000 - 1.12*98500
+1.07*105000 - 1.12*98500
+1.05*105000 - 1.37*98500
+1.37*98500
+1.05*105000
+((24 + 52) * 24 + (52 + 114-24)*24 + 20 * 24) / 144
+40 * 90
+40 * 85
+114 * 24
+114 -224
+114 - 24
+(114 - 24)/12
+126/12
+114/12
+(114+114+48)/12
+23x1.5
+23 * 1.5
+2300*185
+8*3
+22 * 9
+nix-shell -p brave
+562435 + 27700
+1.05*105000
+1.35*98500
+1.05*4000
+clear
+import py4web
+import py4web
+254**4
+emails = """ragnvall@ucsc.edu, dmau@ucsc.edu, davala@ucsc.edu, nbasawa@ucsc.edu, sbhadori@ucsc.edu, krbharga@ucsc.edu, ltcase@ucsc.edu, saachand@ucsc.edu, tchang52@ucsc.edu, kechchao@ucsc.edu, pchaudha@ucsc.edu, nkcheema@ucsc.edu, blschen@ucsc.edu, rechinta@ucsc.edu, rchockal@ucsc.edu, ncorfmat@ucsc.edu, hdadhich@ucsc.edu, jdanielf@ucsc.edu, padatta@ucsc.edu, nddong@ucsc.edu, helamni@ucsc.edu, afleifel@ucsc.edu, asgala@ucsc.edu, cgangi@ucsc.edu, egingery@ucsc.edu, mgodje@ucsc.edu, vgolusup@ucsc.edu, spgray@ucsc.edu, hggunthe@ucsc.edu, crhein@ucsc.edu, gijohern@ucsc.edu, ahillber@ucsc.edu, fhornsan@ucsc.edu, yhuan300@ucsc.edu, hrjahang@ucsc.edu, djhawar@ucsc.edu, akkamath@ucsc.edu, vkanna@ucsc.edu, atesterm@ucsc.edu, daalking@ucsc.edu, dmkrause@ucsc.edu, ckuang10@ucsc.edu, akuznet2@ucsc.edu, nlahan@ucsc.edu, adlai@ucsc.edu, mlau16@ucsc.edu, clee300@ucsc.edu, jlee897@ucsc.edu, pehwlee@ucsc.edu, nleroy@ucsc.edu, mli254@ucsc.edu, taliao@ucsc.edu, jlin216@ucsc.edu, jiima@ucsc.edu, amariche@ucsc.edu, cmiao4@ucsc.edu, amminoch@ucsc.edu, amokkapa@ucsc.edu, raenglan@ucsc.edu, cmu15@ucsc.edu, rmurtint@ucsc.edu, enguye71@ucsc.edu, jnguy330@ucsc.edu, prhunguy@ucsc.edu, tnguy510@ucsc.edu, asnoori@ucsc.edu, adoliva@ucsc.edu, eolivasb@ucsc.edu, amolmos@ucsc.edu, ipandiya@ucsc.edu, arpankon@ucsc.edu, nigpatel@ucsc.edu, unpatel@ucsc.edu, apatil7@ucsc.edu, hpatil@ucsc.edu, kioperez@ucsc.edu, cphan9@ucsc.edu, cwphu@ucsc.edu, rpillala@ucsc.edu, kramesh2@ucsc.edu, verangar@ucsc.edu, anromo@ucsc.edu, gsabbagh@ucsc.edu, psamudra@ucsc.edu, asasi@ucsc.edu, ksasikum@ucsc.edu, nsauton@ucsc.edu, hscapell@ucsc.edu, navserra@ucsc.edu, assharif@ucsc.edu, ashar114@ucsc.edu, asherbro@ucsc.edu, yshi147@ucsc.edu, asidbatt@ucsc.edu, asing209@ucsc.edu, mssiramd@ucsc.edu, vsiu2@ucsc.edu, trsriram@ucsc.edu, gtang7@ucsc.edu, drtompki@ucsc.edu, jtorr124@ucsc.edu, dymtran@ucsc.edu, btrieu2@ucsc.edu, ntybursk@ucsc.edu, joanvale@ucsc.edu, cmvallad@ucsc.edu, pmvarade@ucsc.edu, psvasan@ucsc.edu, savedula@ucsc.edu, lwhitehi@ucsc.edu, helwilso@ucsc.edu, mipwong@ucsc.edu, twong58@ucsc.edu, kicwu@ucsc.edu, dachyang@ucsc.edu, aumyu@ucsc.edu, jaleyu@ucsc.edu, tuzhang@ucsc.edu, yzhan983@ucsc.edu, szhu49@ucsc.edu""".split()
+students = [s[:-1] for s in students]
+emails = [s[:-1] for s in emails]
+emails
+import csv
+s = [row for row in csv.reader(open("students.csv"))]
+s
+a = [row[1] for row in s[2:]]
+a
+set(emails) - set(a)
+set(a) - set(emails)
+b = {'mipwong@ucsc.edu', 'crhein@ucsc.edu', 'ashar114@ucsc.edu', 'pchaudha@ucsc.edu', 'twong58@ucsc.edu', 'arpankon@ucsc.edu', 'ksasikum@ucsc.edu', 'nleroy@ucsc.edu', 'dmkrause@ucsc.edu', 'rchockal@ucsc.edu'}
+", ".join(b)
+import csv
+s = [row for row in csv.reader(open("students.csv"))]
+rows = [row[2] for row in s[2:]]
+rows
+for i in set(rows):
+	if rows.count(i) > 1: print(i, rows.count(i))
+a=3
+a=="3"
+type(a)
+type("3")
+a = 30000
+16150 * 12
+16150 * 10
+0.10 * 11000 + 0.12 * (16150 - 11000)
+a="""Arsh Advani
+Arsh Advaniagadvani@ucsc.edu2172126
+CSE-183-01-LEC-Web Applications-51824
+TA
+Apr 22 at 11:05pm
+02:12:54
+Robert Agnvall
+Robert Agnvallragnvall@ucsc.edu1796294
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 1:46pm
+04:00:19
+Leonardo Alavez Castillo
+Leonardo Alavez Castillolalavezc@ucsc.edu1944709
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 20 at 10:47pm
+54:47
+Denny Au
+Denny Audmau@ucsc.edu1889173
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 10:58pm
+01:05:15
+Dhriti Avala
+Dhriti Avaladavala@ucsc.edu1967042
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 7:16pm
+33:25
+Nirja Basawa
+Nirja Basawanbasawa@ucsc.edu1945787
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 10:47pm
+04:39:53
+Siya Bhadoria
+Siya Bhadoriasbhadori@ucsc.edu1939819
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 3:12pm
+11:19
+Makarand Milind Bhalerao
+Makarand Milind Bhaleraombhalera@ucsc.edu2172366
+CSE-183-01-LEC-Web Applications-51824
+TA
+Apr 23 at 9:58am
+01:07:12
+Kriti Bhargava
+Kriti Bhargavakrbharga@ucsc.edu1975329
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 10:34pm
+12:51:27
+Philip Bizimis
+Philip Bizimispbizimis@ucsc.edu2172429
+CSE-183-01-LEC-Web Applications-51824
+TA
+Apr 2 at 10:21pm
+11:46
+Liam Case
+Liam Caseltcase@ucsc.edu1986595
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 6:03pm
+01:52:03
+Samintha Chandrasiri
+Samintha Chandrasirisaachand@ucsc.edu1969999
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 6:35pm
+08:43
+Elton Chang
+Elton Changtchang52@ucsc.edu1950382
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 8:37am
+35:37
+Kenshin Chao
+Kenshin Chaokechchao@ucsc.edu1902803
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 2:24am
+04:15:43
+Priya Chaudhari
+Priya Chaudharipchaudha@ucsc.edu1913252
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 8:28pm
+02:29:48
+Navneet Cheema
+Navneet Cheemankcheema@ucsc.edu1867687
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 2:59pm
+01:13:39
+Blythe Chen
+Blythe Chenblschen@ucsc.edu1946580
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 10:24pm
+Reema Chintala
+Reema Chintalarechinta@ucsc.edu1974246
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 2:33pm
+06:20:56
+Ria Chockalingam
+Ria Chockalingamrchockal@ucsc.edu1892598
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 7:04pm
+08:43:32
+Nick Corfmat
+Nick Corfmatncorfmat@ucsc.edu1890805
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 21 at 10:21pm
+34:50
+Harsh Dadhich
+Harsh Dadhichhdadhich@ucsc.edu1956511
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 11:00pm
+13:35:19
+Jeffrey Daniel-Flores
+Jeffrey Daniel-Floresjdanielf@ucsc.edu1901421
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 7:27pm
+21:40:02
+Parul Datta
+Parul Dattapadatta@ucsc.edu1860428
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 5:27pm
+04:47:46
+Massimo Di Pierro
+Massimo Di Pierromadipier@ucsc.edu2086177
+Web Applications
+Teacher
+Apr 23 at 11:00pm
+08:11:08
+Vasavi Doddamani
+Vasavi Doddamanivdoddama@ucsc.edu2172276
+CSE-183-01-LEC-Web Applications-51824
+CSE-183-01-LEC-Web Applications-51824
+Student
+Tutor
+Apr 23 at 9:28pm
+Apr 23 at 9:28pm
+11:00
+Nathan Dong
+Nathan Dongnddong@ucsc.edu1977724
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 1:55pm
+05:16:13
+Hamza El Amni
+Hamza El Amnihelamni@ucsc.edu2166940
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 1:43pm
+02:56:40
+Andre Fleifel
+Andre Fleifelafleifel@ucsc.edu1990574
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 1:11pm
+16:51
+Aarshi Gala
+Aarshi Galaasgala@ucsc.edu1981077
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 3:32pm
+01:18:39
+Charitha Gangi
+Charitha Gangicgangi@ucsc.edu1961861
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 12:03pm
+09:51:30
+Lily Gingery
+Lily Gingery (she/her)  egingery@ucsc.edu1877119
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 11:00pm
+11:57:34
+Maryann Godje
+Maryann Godjemgodje@ucsc.edu1924080
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 7:27pm
+22:53
+Varun Golusupudi
+Varun Golusupudivgolusup@ucsc.edu1892554
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 4:10pm
+05:31:32
+Sean Gray
+Sean Grayspgray@ucsc.edu1942273
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 3:52pm
+26:39
+Hannah Gunther
+Hannah Guntherhggunthe@ucsc.edu2029771
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 12:01pm
+05:28:55
+Chris Hein
+Chris Heincrhein@ucsc.edu1896877
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 4:13pm
+14:19:57
+Giovanni Hernandez Barajas
+Giovanni Hernandez Barajasgijohern@ucsc.edu1937924
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 7:13pm
+29:39
+Aaron Hillberg
+Aaron Hillbergahillber@ucsc.edu1887782
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 8:15pm
+05:30:47
+Florian Horn Sanders
+Florian Horn Sandersfhornsan@ucsc.edu1941497
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 8:10pm
+03:02:39
+Victor Huang
+Victor Huangvhuang16@ucsc.edu1904211
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 8:00pm
+06:52
+Yingting Huang
+Yingting Huangyhuan300@ucsc.edu1867109
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 2:01am
+01:16:21
+Hana Jahangiri
+Hana Jahangirihrjahang@ucsc.edu1881853
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 5:29pm
+01:04:03
+Dishita Jhawar
+Dishita Jhawardjhawar@ucsc.edu1956567
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 7:19pm
+03:32:03
+Jaisuraj Kaleeswaran
+Jaisuraj Kaleeswaranjkaleesw@ucsc.edu1955186
+CSE-183-01-LEC-Web Applications-51824
+Student Auditor
+Apr 23 at 3:42pm
+Akshay Kamath
+Akshay Kamathakkamath@ucsc.edu1939435
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 4:37pm
+01:11:02
+Varun Kanna
+Varun Kannavkanna@ucsc.edu1939995
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 10:44pm
+03:21:48
+AJ Kim
+AJ Kimatesterm@ucsc.edu1932931
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 7:00pm
+02:52:39
+Dakota King
+Dakota Kingdaalking@ucsc.edu2042681
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 9:22pm
+19:35
+Derek Krause
+Derek Krausedmkrause@ucsc.edu2001473
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 9:46pm
+01:09:48
+Mila Kuang
+Mila Kuangckuang10@ucsc.edu2094657
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 2:55pm
+01:10:23
+Andrew Kuznetsov
+Andrew Kuznetsovakuznet2@ucsc.edu1887194
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 21 at 1:31pm
+06:42
+Alan Lai
+Alan Laiadlai@ucsc.edu1961263
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 12:58pm
+40:37
+Kiaran Lau
+Kiaran Laukylau@ucsc.edu1838179
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 4:22pm
+19:38
+Mandy Lau
+Mandy Laumlau16@ucsc.edu2027253
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 7:45pm
+08:41:12
+Cameron Lee
+Cameron Leeclee300@ucsc.edu1886283
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 21 at 12:24pm
+47:10
+Jooho Lee
+Jooho Leejlee897@ucsc.edu2036296
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 10:47pm
+22:13
+Peter Lee
+Peter Leepehwlee@ucsc.edu1953327
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 12:41am
+08:22:20
+Nathan Leroy
+Nathan Leroynleroy@ucsc.edu1974240
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 8:09pm
+20:34
+Madison Li
+Madison Limli254@ucsc.edu1872041
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 6:44am
+24:08
+Thomas Liao
+Thomas Liaotaliao@ucsc.edu1944050
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 9:44pm
+08:07:07
+Jennie Lin
+Jennie Linjlin216@ucsc.edu1885276
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 9:43pm
+03:26:02
+Shea Line
+Shea Line (he/him)  sline@ucsc.edu1858427
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 7:50pm
+05:16:03
+Isaac Ma
+Isaac Majiima@ucsc.edu1884987
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 9:05pm
+17:42
+Ashwin Marichetty
+Ashwin Marichettyamariche@ucsc.edu1979610
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 7:38pm
+02:36:46
+Christy Miao
+Christy Miaocmiao4@ucsc.edu1883192
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 12:13pm
+03:02:03
+Amish Minocha
+Amish Minochaamminoch@ucsc.edu1955286
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 8:05pm
+01:10:54
+Aditya Mokkapati
+Aditya Mokkapatiamokkapa@ucsc.edu1943003
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 2:44pm
+01:35:45
+Victoria Morgan
+Victoria Morganraenglan@ucsc.edu2042718
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 11:01am
+01:21:17
+Christian Mu
+Christian Mucmu15@ucsc.edu1902023
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 21 at 4:52pm
+24:26
+Rithvik Mungara
+Rithvik Mungararmungara@ucsc.edu1974769
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 10:16pm
+04:43:51
+Rathik Murtinty
+Rathik Murtintyrmurtint@ucsc.edu1941277
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 15 at 11:10pm
+04:41
+Emma Nguyen
+Emma Nguyenenguye71@ucsc.edu2014200
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 7:48pm
+50:37
+Jonathan Nguyen
+Jonathan Nguyenjnguy330@ucsc.edu1869821
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 7:06pm
+53:06
+Preston Nguyen
+Preston Nguyenprhunguy@ucsc.edu1872865
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 8:03pm
+14:08
+Trish Nguyen
+Trish Nguyentnguy510@ucsc.edu1874113
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 12:28am
+04:08:58
+Amir Noori
+Amir Nooriasnoori@ucsc.edu1976539
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 9:19pm
+34:38
+Adam Oliva
+Adam Olivaadoliva@ucsc.edu1860620
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 12:58pm
+19:44
+Ethan Olivas Bartels
+Ethan Olivas Bartelseolivasb@ucsc.edu1894410
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 21 at 8:58pm
+05:18
+Adrian Olmos
+Adrian Olmosamolmos@ucsc.edu1837457
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 3:38pm
+01:56:11
+Idhaya Pandiyan
+Idhaya Pandiyanipandiya@ucsc.edu1952902
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 7:05pm
+11:48
+Nisheet Patel
+Nisheet Patelnigpatel@ucsc.edu1986799
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 16 at 6:42pm
+35:51
+Uday Patel
+Uday Patelunpatel@ucsc.edu2083462
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 9:39am
+12:56:50
+Aditya Patil
+Aditya Patilapatil7@ucsc.edu2035866
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 11:00am
+07:21:04
+Hetal Patil
+Hetal Patilhpatil@ucsc.edu1949647
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 5:34pm
+01:34:38
+Kirk Perez
+Kirk Perezkioperez@ucsc.edu1918126
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 8:44pm
+04:49:51
+Chan Phan
+Chan Phancphan9@ucsc.edu2082948
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 4:44pm
+04:06:52
+Charles Phu
+Charles Phucwphu@ucsc.edu2043384
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 7:56pm
+02:16:29
+Ravi Pillalamarri
+Ravi Pillalamarrirpillala@ucsc.edu1946814
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 10:57pm
+02:27:20
+Rahil Prakash
+Rahil Prakashrprakas2@ucsc.edu2012687
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 9:34pm
+01:23:16
+Kaushal Ramesh
+Kaushal Rameshkramesh2@ucsc.edu1935976
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 7:05pm
+06:11
+Anuar Romo
+Anuar Romoanromo@ucsc.edu2083888
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 7:04pm
+08:49:39
+George Sabbagh
+George Sabbaghgsabbagh@ucsc.edu1839741
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 4:19pm
+01:00:01
+Pujitha Samudrala
+Pujitha Samudralapsamudra@ucsc.edu2000133
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 9:55pm
+07:20:22
+Ann Sasi
+Ann Sasiasasi@ucsc.edu1957955
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 9:11pm
+21:44
+Kavya Sasikumar
+Kavya Sasikumarksasikum@ucsc.edu1946993
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 7:24pm
+01:04:17
+Nathan Sauton
+Nathan Sautonnsauton@ucsc.edu2080831
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 19 at 10:33am
+Valentina Serrano
+Valentina Serranonavserra@ucsc.edu1848892
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 8:24pm
+11:51
+Saurav Shah
+Saurav Shahsakushah@ucsc.edu2173640
+CSE-183-01-LEC-Web Applications-51824
+CSE-183-01-LEC-Web Applications-51824
+Student
+Tutor
+Apr 12 at 11:51am
+Apr 12 at 11:51am
+Aaron Sharif
+Aaron Sharifassharif@ucsc.edu1985564
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 6:46pm
+17:31
+Akshat Sharma
+Akshat Sharmaashar114@ucsc.edu1967126
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 10:44pm
+02:04:38
+Shubham Sharma
+Shubham Sharmasshar134@ucsc.edu2172307
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 17 at 7:36pm
+35:09
+Alexander Sherbrooke
+Alexander Sherbrookeasherbro@ucsc.edu2053917
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 12:36am
+52:51:51
+Yuan Shi
+Yuan Shiyshi147@ucsc.edu2041822
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 20 at 10:44pm
+05:10:17
+Aryan Sidbatte
+Aryan Sidbatteasidbatt@ucsc.edu1963147
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 8:34pm
+01:39:42
+Adarsh Singh
+Adarsh Singhasing209@ucsc.edu1930592
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 7:03pm
+52:37
+Mayankh Siramdas
+Mayankh Siramdasmssiramd@ucsc.edu1687470
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 21 at 12:47pm
+24:30
+Vincent Siu
+Vincent Siuvsiu2@ucsc.edu1894365
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 2:59pm
+03:04:52
+Trisha Sriram
+Trisha Sriramtrsriram@ucsc.edu1877459
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 10:46pm
+10:32:53
+Geoffrey Tang
+Geoffrey Tanggtang7@ucsc.edu1977086
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 1:41pm
+24:49
+Dakota Tompkins
+Dakota Tompkinsdrtompki@ucsc.edu1905298
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 21 at 10:47pm
+04:54:28
+Jason Torres
+Jason Torresjtorr124@ucsc.edu1923735
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 7:07pm
+13:41
+Brendan Trieu
+Brendan Trieubtrieu2@ucsc.edu1860225
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 1:43pm
+43:52
+Khang Trieu
+Khang Trieukntrieu@ucsc.edu1883553
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 9:04pm
+37:29
+Nicola Tyburski
+Nicola Tyburskintybursk@ucsc.edu1903800
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 10:04am
+05:39:19
+Jose Valencia
+Jose Valenciajoanvale@ucsc.edu1871563
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 11:00pm
+03:29:36
+Christopher Valladares
+Christopher Valladarescmvallad@ucsc.edu1936067
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 18 at 11:35am
+Praneet Varade
+Praneet Varadepmvarade@ucsc.edu1877358
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 5:03pm
+01:20:32
+Pratyush Vasan
+Pratyush Vasanpsvasan@ucsc.edu1880336
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 6:57pm
+03:57:58
+Saumit Vedula
+Saumit Vedulasavedula@ucsc.edu1950923
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 7:06pm
+01:05:33
+Lewis Whitehill
+Lewis Whitehilllwhitehi@ucsc.edu1874705
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 22 at 12:52pm
+09:49:54
+Heston Wilson
+Heston Wilsonhelwilso@ucsc.edu1862664
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 4:48pm
+02:35:49
+Thomas Wong
+Thomas Wongtwong58@ucsc.edu2002703
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 2:39pm
+09:14:38
+Kimberley Wu
+Kimberley Wu (she/her)  kicwu@ucsc.edu1875198
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 5:54pm
+06:32:09
+Daniel Yang
+Daniel Yangdachyang@ucsc.edu1954880
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 5:38pm
+32:29
+Aria Yee
+Aria Yeealjayee@ucsc.edu1699781
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 10:20pm
+55:07
+Austin Yu
+Austin Yuaumyu@ucsc.edu1857553
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 4:45pm
+08:13:50
+Jason Yu
+Jason Yujaleyu@ucsc.edu1874080
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 8:04pm
+09:47:15
+Tuo Zhang
+Tuo Zhangtuzhang@ucsc.edu1812030
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 7:49pm
+02:10:59
+Yiheng Zhang
+Yiheng Zhangyzhan983@ucsc.edu2099230
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 5:56pm
+01:06:32
+Sandy Zhu
+Sandy Zhuszhu49@ucsc.edu1781888
+CSE-183-01-LEC-Web Applications-51824
+Student
+Apr 23 at 10:06pm
+58:39""".count("CSE-183")
+a
+enrolled = [email.strip() for email in open("enrolled.txt").read().strip().split(",")]
+enrolled
+import csv
+rows = [row for row in csv.reader(open("students.csv"))]
+rows[1
+]
+for row in rows:
+	if row[1] not in enrolled: print(row)
+enrolled = [email.strip().lower() for email in open("enrolled.txt").read().strip().split(",")]
+for row in rows:
+	if row[1].lower() not in enrolled: print(row)
+from py4web import DAL, Field
+db = DAL("sqlite://storage.sqlite", folder="/tmp")
+db.define_table("dog", Field("name"))
+db._lastsql
+db.dog
+db.dog.insert(name="snoopy")
+db.dog.insert(name="Viola")
+db.dog.insert(name="Pluto")
+db.dog[1]
+db.dog[1].id
+db.dog[1].snoopy
+db.dog[1].name
+db.dog[1].update_record(name="Snoopy")
+db.dog[1]
+db.dog[6]
+db.dog.id > 1
+db(db.dog.id > 1)
+db(db.dog.id > 1).select()
+print(db(db.dog.id > 1).select())
+rows = db(db.dog.id > 1).select()
+rows[0]
+rows[1]
+for row in rows: print(row)
+for row in rows: print(row.id, row.name)
+print(db(db.dog.name.startswith("P")).select())
+db.define_table("person", Field("name"))
+db.person.insert(name="John")
+db.person.insert(name="tim")
+db(db.person.id==2).update(name=="Tim")
+db(db.person.id==2).update(name="Tim")
+db.person.insert(name="Alex")
+print(db(db.person).select())
+db.commit()
+db = DAL("sqlite://storage.sqlite", folder="/tmp")
+db.dog
+db.define_table("person", Field("name"))
+print(db(db.person).select())
+db.define_table("dog", Field("name"), Field("color"), Field("owner", "reference person"))
+db._lastsql
+db.dog[1]
+db.dog[1].owner = 2
+db.dog[1].owner
+db.dog[1].update_record(owner=2)
+db.dog[1].owner
+db.dog[1].owner.name
+db.dog[1].owner + 1
+print(db(db.dog).select())
+db(db.dog.owner==None).update(owner=1)
+print(db(db.dog).select())
+db(db.person.name=="John").select()
+db(db.person.name=="John").select().first
+db(db.person.name=="John").select().first()
+db(db.person.name=="John").select().first().id
+print(db(db.dog.owner == db(db.person.name=="John").select().first().id).select())
+import re
+re.compile(r"^\d{4}-\d\d-\d\d$").match("2025-01-01")
+import pydal
+db = DAL(None)
+from pydal import DAL, Field
+db = DAL(None)
+db.define_table("thing", Field('x', "datetime"))
+db.thing.insert(x="ewrwerg")
+db.thing.insert(x="2025-01-01")
+db.thing.insert(x="2025-01-01T21")
+db = DAL(":memory:")
+db = DAL("<memory>")
+db = DAL()
+db.thing.insert(x="2025-01-01T21")
+db.define_table("thing", Field('x', "datetime"))
+db.thing.insert(x="2025-01-01T21")
+db.thing[1]
+db.thing.insert(x="2025-01-01T21:03:04")
+db.thing[2]
+db.thing.insert(x="2025-01-01x21:03:04")
+db.define_table("thing", Field('x', "datetime"), Field("y", "integer"))
+del db["thing"]
+db.define_table("thing", Field('x', "datetime"), Field("y", "integer"))
+db.dedefine_table("thing", Field('x', "datetime"), Field("y", "integer"))
+db.redefine_table("thing", Field('x', "datetime"), Field("y", "integer"))
+db.define_table("t", Field("y", "integer"))
+db.t.insert(y="xyz")
+raw="""# Group 01
+vgolusup@ucsc.edu (leader)
+hrjahang@ucsc.edu
+joanvale@ucsc.edu
+trsriram@ucsc.edu
+pmvarade@ucsc.edu
+davala@ucsc.edu
+ 
+# Group 02
+tuzhang@ucsc.edu (leader)
+hggunthe@ucsc.edu
+jnguy330@ucsc.edu
+mgodje@ucsc.edu
+Drtompki@ucsc.edu
+mlau16@ucsc.edu
+# Group 03
+tnguy510@ucsc.edu (leader)
+atesterm@ucsc.edu
+mli254@ucsc.edu
+blschen@ucsc.edu
+taliao@ucsc.edu
+# Group 04
+vkanna@ucsc.edu (leader)
+kramesh2@ucsc.edu
+nigpatel@ucsc.edu
+rmurtint@ucsc.edu
+# Group 05
+rchockal@ucsc.edu (leader)
+egingery@ucsc.edu
+asherbro@ucsc.edu
+cgangi@ucsc.edu
+fhornsan@ucsc.edu
+prhunguy@ucsc.edu
+# Group 06
+asnoori@ucsc.edu (leader)
+rpillala@ucsc.edu
+amokkapa@ucsc.edu
+ashar114@ucsc.edu
+saachand@ucsc.edu
+# Group 07
+psamudra@ucsc.edu (leader)
+rechinta@ucsc.edu
+cmiao4@ucsc.edu
+sline@ucsc.edu
+ltcase@ucsc.edu
+ckuang10@ucsc.edu
+# Group 08
+kicwu@ucsc.edu (leader)
+kioperez@ucsc.edu
+gtang7@ucsc.edu
+apatil7@ucsc.edu
+nbasawa@ucsc.edu
+jiima@ucsc.edu
+# Group 09
+cwphu@ucsc.edu (leader)
+unpatel@ucsc.edu 
+twong58@ucsc.edu 
+kylau@ucsc.edu 
+gijohern@ucsc.edu 
+ragnvall@ucsc.edu
+#Group 10
+akkamath@ucsc.edu (leader)
+btrieu2@ucsc.edu 
+raenglan@ucsc.edu
+amminoch@ucsc.edu
+jdanielf@ucsc.edu
+kechchao@ucsc.edu 
+#  Group 11
+pehwlee@ucsc.edu (leader)
+rmungara@ucsc.edu
+nleroy@ucsc.edu
+ntybursk@ucsc.edu
+ahillber@ucsc.edu
+pchaudha@ucsc.edu
+# Group 12
+jlin216@ucsc.edu (leader)
+nddong@ucsc.edu
+crhein@ucsc.edu
+asasi@ucsc.edu
+enguye71@ucsc.edu
+asidbatt@ucsc.edu
+#  Group 13
+dmau@ucsc.edu (leader)
+gsabbagh@ucsc.edu
+jtorr124@ucsc.edu
+cmvallad@ucsc.edu
+vsiu2@ucsc.edu
+yshi147@ucsc.edu
+# Group 14
+asgala@ucsc.edu (leader)
+hdadhich@ucsc.edu
+krbharga@ucsc.edu
+sbhadori@ucsc.edu
+akuznet2@ucsc.edu
+padatta@ucsc.edu
+# Group 15
+asing209@ucsc.edu (leader)
+nsauton@ucsc.edu
+navserra@ucsc.edu
+kntrieu@ucsc.edu
+vhuang16@ucsc.edu
+ 
+# Group 16
+cmu15@ucsc.edu (leader)
+afleifel@ucsc.edu
+eolivasb@ucsc.edu
+aumyu@ucsc.edu
+lwhitehi@ucsc.edu
+# Group 17
+yzhan983@ucsc.edu
+helamni@ucsc.edu
+jaleyu@ucsc.edu
+tchang52@ucsc.edu
+szhu49@ucsc.edu
+jlee897@ucsc.edu 
+# Group 18
+ncorfmat@ucsc.edu
+djhawar@ucsc.edu 
+adlai@ucsc.edu
+nkcheema@ucsc.edu 
+amolmos@ucsc.edu
+ipandiya@ucsc.edu
+# Group 19
+clee300@ucsc.edu (leader)
+anromo@ucsc.edu
+psvasan@ucsc.edu
+spgray@ucsc.edu
+assharif@ucsc.edu
+dachyang@ucsc.edu
+ 
+#Group 20 
+dmkrause@ucsc.edu (solo group)
+# Group 21
+helwilso@ucsc.edu
+rprakas2@ucsc.edu
+#Group 22
+ksasikum@ucsc.edu
+hpatil@ucsc.edu"""
+parts = raw.split("#")
+import re
+em = re.compile(r'\w+@ucsc\.edu')
+groups = [em.findall(part) for part in parts]
+groups
+groups = groups[1:]
+len(groups)
+a = reduce(lambda a,b: a+b, groups)
+from functools import reduce
+a = reduce(lambda a,b: a+b, groups)
+len(a)
+[x for x in a if a.count(x)>1]
+import json
+json.dumps(open("groups.json","w"), groups)
+json.dump(open("groups.json","w"), groups)
+json.dump(groups, open("groups.json","w"))
+all = em.findall("ragnvall@ucsc.edu, dmau@ucsc.edu, davala@ucsc.edu, nbasawa@ucsc.edu, sbhadori@ucsc.edu, krbharga@ucsc.edu, ltcase@ucsc.edu, saachand@ucsc.edu, tchang52@ucsc.edu, kechchao@ucsc.edu, pchaudha@ucsc.edu, nkcheema@ucsc.edu, blschen@ucsc.edu, rechinta@ucsc.edu, rchockal@ucsc.edu, ncorfmat@ucsc.edu, hdadhich@ucsc.edu, jdanielf@ucsc.edu, padatta@ucsc.edu, nddong@ucsc.edu, helamni@ucsc.edu, afleifel@ucsc.edu, asgala@ucsc.edu, cgangi@ucsc.edu, egingery@ucsc.edu, mgodje@ucsc.edu, vgolusup@ucsc.edu, spgray@ucsc.edu, hggunthe@ucsc.edu, crhein@ucsc.edu, gijohern@ucsc.edu, ahillber@ucsc.edu, fhornsan@ucsc.edu, vhuang16@ucsc.edu, yhuan300@ucsc.edu, hrjahang@ucsc.edu, djhawar@ucsc.edu, akkamath@ucsc.edu, vkanna@ucsc.edu, atesterm@ucsc.edu, daalking@ucsc.edu, dmkrause@ucsc.edu, ckuang10@ucsc.edu, akuznet2@ucsc.edu, adlai@ucsc.edu, kylau@ucsc.edu, mlau16@ucsc.edu, clee300@ucsc.edu, jlee897@ucsc.edu, pehwlee@ucsc.edu, nleroy@ucsc.edu, mli254@ucsc.edu, taliao@ucsc.edu, jlin216@ucsc.edu, sline@ucsc.edu, jiima@ucsc.edu, amariche@ucsc.edu, cmiao4@ucsc.edu, amminoch@ucsc.edu, amokkapa@ucsc.edu, raenglan@ucsc.edu, cmu15@ucsc.edu, rmungara@ucsc.edu, rmurtint@ucsc.edu, enguye71@ucsc.edu, jnguy330@ucsc.edu, prhunguy@ucsc.edu, tnguy510@ucsc.edu, asnoori@ucsc.edu, adoliva@ucsc.edu, eolivasb@ucsc.edu, amolmos@ucsc.edu, ipandiya@ucsc.edu, nigpatel@ucsc.edu, unpatel@ucsc.edu, apatil7@ucsc.edu, hpatil@ucsc.edu, kioperez@ucsc.edu, cphan9@ucsc.edu, cwphu@ucsc.edu, rpillala@ucsc.edu, rprakas2@ucsc.edu, kramesh2@ucsc.edu, anromo@ucsc.edu, gsabbagh@ucsc.edu, psamudra@ucsc.edu, asasi@ucsc.edu, ksasikum@ucsc.edu, nsauton@ucsc.edu, navserra@ucsc.edu, assharif@ucsc.edu, ashar114@ucsc.edu, asherbro@ucsc.edu, yshi147@ucsc.edu, asidbatt@ucsc.edu, asing209@ucsc.edu, vsiu2@ucsc.edu, trsriram@ucsc.edu, gtang7@ucsc.edu, drtompki@ucsc.edu, jtorr124@ucsc.edu, btrieu2@ucsc.edu, kntrieu@ucsc.edu, ntybursk@ucsc.edu, joanvale@ucsc.edu, cmvallad@ucsc.edu, pmvarade@ucsc.edu, psvasan@ucsc.edu, savedula@ucsc.edu, lwhitehi@ucsc.edu, helwilso@ucsc.edu, twong58@ucsc.edu, kicwu@ucsc.edu, dachyang@ucsc.edu, aljayee@ucsc.edu, aumyu@ucsc.edu, jaleyu@ucsc.edu, tuzhang@ucsc.edu, yzhan983@ucsc.edu, szhu49@ucsc.edu")
+all
+a
+set(all) - set(a)
+5686/6144
+from pydal import DAL, Field
+"a AS b".split(" AS ")
+import datetime
+datetime.datetime.now(datetime.timezone.utc)
+datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)
+datetime.datetime.now()
+a = """# Group 01
+vgolusup@ucsc.edu (leader)
+hrjahang@ucsc.edu
+joanvale@ucsc.edu
+trsriram@ucsc.edu
+pmvarade@ucsc.edu
+davala@ucsc.edu
+ 
+# Group 02
+tuzhang@ucsc.edu (leader)
+hggunthe@ucsc.edu
+jnguy330@ucsc.edu
+mgodje@ucsc.edu
+drtompki@ucsc.edu
+mlau16@ucsc.edu
+# Group 03
+tnguy510@ucsc.edu (leader)
+atesterm@ucsc.edu
+mli254@ucsc.edu
+blschen@ucsc.edu
+taliao@ucsc.edu
+aljayee@ucsc.edu (added by professor)
+# Group 04
+vkanna@ucsc.edu (leader)
+kramesh2@ucsc.edu
+nigpatel@ucsc.edu
+rmurtint@ucsc.edu
+# Group 05
+rchockal@ucsc.edu (leader)
+egingery@ucsc.edu
+asherbro@ucsc.edu
+cgangi@ucsc.edu
+fhornsan@ucsc.edu
+prhunguy@ucsc.edu
+# Group 06
+asnoori@ucsc.edu (leader)
+rpillala@ucsc.edu
+amokkapa@ucsc.edu
+ashar114@ucsc.edu
+saachand@ucsc.edu
+# Group 07
+psamudra@ucsc.edu (leader)
+rechinta@ucsc.edu
+cmiao4@ucsc.edu
+sline@ucsc.edu
+ltcase@ucsc.edu
+ckuang10@ucsc.edu
+# Group 08
+kicwu@ucsc.edu (leader)
+kioperez@ucsc.edu
+gtang7@ucsc.edu
+apatil7@ucsc.edu
+nbasawa@ucsc.edu
+jiima@ucsc.edu
+# Group 09
+cwphu@ucsc.edu (leader)
+unpatel@ucsc.edu 
+twong58@ucsc.edu 
+kylau@ucsc.edu 
+gijohern@ucsc.edu 
+ragnvall@ucsc.edu
+#Group 10
+akkamath@ucsc.edu (leader)
+btrieu2@ucsc.edu 
+raenglan@ucsc.edu
+amminoch@ucsc.edu
+jdanielf@ucsc.edu
+kechchao@ucsc.edu 
+#  Group 11
+pehwlee@ucsc.edu (leader)
+rmungara@ucsc.edu
+nleroy@ucsc.edu
+ntybursk@ucsc.edu
+ahillber@ucsc.edu
+pchaudha@ucsc.edu
+# Group 12
+jlin216@ucsc.edu (leader)
+nddong@ucsc.edu
+crhein@ucsc.edu
+asasi@ucsc.edu
+enguye71@ucsc.edu
+asidbatt@ucsc.edu
+#  Group 13
+dmau@ucsc.edu (leader)
+gsabbagh@ucsc.edu
+jtorr124@ucsc.edu
+cmvallad@ucsc.edu
+vsiu2@ucsc.edu
+yshi147@ucsc.edu
+# Group 14
+asgala@ucsc.edu (leader)
+hdadhich@ucsc.edu
+krbharga@ucsc.edu
+sbhadori@ucsc.edu
+akuznet2@ucsc.edu
+padatta@ucsc.edu
+# Group 15
+asing209@ucsc.edu (leader)
+nsauton@ucsc.edu
+navserra@ucsc.edu
+kntrieu@ucsc.edu
+vhuang16@ucsc.edu
+ 
+# Group 16
+cmu15@ucsc.edu (leader)
+afleifel@ucsc.edu
+eolivasb@ucsc.edu
+aumyu@ucsc.edu
+lwhitehi@ucsc.edu
+daalking@ucsc.edu (added by professor)
+# Group 17
+yzhan983@ucsc.edu
+helamni@ucsc.edu
+jaleyu@ucsc.edu
+tchang52@ucsc.edu
+szhu49@ucsc.edu
+jlee897@ucsc.edu 
+# Group 18
+ncorfmat@ucsc.edu
+djhawar@ucsc.edu 
+adlai@ucsc.edu
+nkcheema@ucsc.edu 
+amolmos@ucsc.edu
+ipandiya@ucsc.edu
+# Group 19
+clee300@ucsc.edu (leader)
+anromo@ucsc.edu
+psvasan@ucsc.edu
+spgray@ucsc.edu
+assharif@ucsc.edu
+dachyang@ucsc.edu
+ 
+# Group 20
+helwilso@ucsc.edu
+rprakas2@ucsc.edu
+savedula@ucsc.edu (added by professor)
+amariche@ucsc.edu (added by professor)
+yhuan300@ucsc.edu (added by professor)
+#Group 21
+ksasikum@ucsc.edu
+hpatil@ucsc.edu
+adoliva@ucsc.edu (added by professor)
+cphan9@ucsc.edu (added by professor)"""
+a = a.split("#")# Group 01
+vgolusup@ucsc.edu (leader)
+hrjahang@ucsc.edu
+joanvale@ucsc.edu
+trsriram@ucsc.edu
+pmvarade@ucsc.edu
+davala@ucsc.edu
+ 
+# Group 02
+tuzhang@ucsc.edu (leader)
+hggunthe@ucsc.edu
+jnguy330@ucsc.edu
+mgodje@ucsc.edu
+drtompki@ucsc.edu
+mlau16@ucsc.edu
+# Group 03
+tnguy510@ucsc.edu (leader)
+atesterm@ucsc.edu
+mli254@ucsc.edu
+blschen@ucsc.edu
+taliao@ucsc.edu
+aljayee@ucsc.edu (added by professor)
+# Group 04
+vkanna@ucsc.edu (leader)
+kramesh2@ucsc.edu
+nigpatel@ucsc.edu
+rmurtint@ucsc.edu
+# Group 05
+rchockal@ucsc.edu (leader)
+egingery@ucsc.edu
+asherbro@ucsc.edu
+cgangi@ucsc.edu
+fhornsan@ucsc.edu
+prhunguy@ucsc.edu
+# Group 06
+asnoori@ucsc.edu (leader)
+rpillala@ucsc.edu
+amokkapa@ucsc.edu
+ashar114@ucsc.edu
+saachand@ucsc.edu
+# Group 07
+psamudra@ucsc.edu (leader)
+rechinta@ucsc.edu
+cmiao4@ucsc.edu
+sline@ucsc.edu
+ltcase@ucsc.edu
+ckuang10@ucsc.edu
+# Group 08
+kicwu@ucsc.edu (leader)
+kioperez@ucsc.edu
+gtang7@ucsc.edu
+apatil7@ucsc.edu
+nbasawa@ucsc.edu
+jiima@ucsc.edu
+# Group 09
+cwphu@ucsc.edu (leader)
+unpatel@ucsc.edu 
+twong58@ucsc.edu 
+kylau@ucsc.edu 
+gijohern@ucsc.edu 
+ragnvall@ucsc.edu
+#Group 10
+akkamath@ucsc.edu (leader)
+btrieu2@ucsc.edu 
+raenglan@ucsc.edu
+amminoch@ucsc.edu
+jdanielf@ucsc.edu
+kechchao@ucsc.edu 
+#  Group 11
+pehwlee@ucsc.edu (leader)
+rmungara@ucsc.edu
+nleroy@ucsc.edu
+ntybursk@ucsc.edu
+ahillber@ucsc.edu
+pchaudha@ucsc.edu
+# Group 12
+jlin216@ucsc.edu (leader)
+nddong@ucsc.edu
+crhein@ucsc.edu
+asasi@ucsc.edu
+enguye71@ucsc.edu
+asidbatt@ucsc.edu
+#  Group 13
+dmau@ucsc.edu (leader)
+gsabbagh@ucsc.edu
+jtorr124@ucsc.edu
+cmvallad@ucsc.edu
+vsiu2@ucsc.edu
+yshi147@ucsc.edu
+# Group 14
+asgala@ucsc.edu (leader)
+hdadhich@ucsc.edu
+krbharga@ucsc.edu
+sbhadori@ucsc.edu
+akuznet2@ucsc.edu
+padatta@ucsc.edu
+# Group 15
+asing209@ucsc.edu (leader)
+nsauton@ucsc.edu
+navserra@ucsc.edu
+kntrieu@ucsc.edu
+vhuang16@ucsc.edu
+ 
+# Group 16
+cmu15@ucsc.edu (leader)
+afleifel@ucsc.edu
+eolivasb@ucsc.edu
+aumyu@ucsc.edu
+lwhitehi@ucsc.edu
+daalking@ucsc.edu (added by professor)
+# Group 17
+yzhan983@ucsc.edu
+helamni@ucsc.edu
+jaleyu@ucsc.edu
+tchang52@ucsc.edu
+szhu49@ucsc.edu
+jlee897@ucsc.edu 
+# Group 18
+ncorfmat@ucsc.edu
+djhawar@ucsc.edu 
+adlai@ucsc.edu
+nkcheema@ucsc.edu 
+amolmos@ucsc.edu
+ipandiya@ucsc.edu
+# Group 19
+clee300@ucsc.edu (leader)
+anromo@ucsc.edu
+psvasan@ucsc.edu
+spgray@ucsc.edu
+assharif@ucsc.edu
+dachyang@ucsc.edu
+ 
+# Group 20
+helwilso@ucsc.edu
+rprakas2@ucsc.edu
+savedula@ucsc.edu (added by professor)
+amariche@ucsc.edu (added by professor)
+yhuan300@ucsc.edu (added by professor)
+#Group 21
+ksasikum@ucsc.edu
+hpatil@ucsc.edu
+adoliva@ucsc.edu (added by professor)	[A
+a
+a = a[1:]
+import re
+r = re.compile('\w+@ucsc.edu')
+r = re.compile(r'\w+@ucsc.edu')
+groups  = [r.findall(item) for item in a]
+groups
+g = []
+for k, group in enumarete(groups): g.append({"name": f"project-{k+1}", "emails": group})
+for k, group in enumerate(groups): g.append({"name": f"project-{k+1}", "emails": group})
+g
+import json
+json.dump(g, open("groups.json",'w'))
+"abc".format(x=1)
+from pydal.validators import IS_INT_IN_RANGE
+IS_INT_IN_RANGE()("45")
+from pydal import DAL, Field
+from py4web import DAL, Field
+from py4web import DAL
+db = DAL("sqlite://storage1.sqlite", folder="/tmp")
+from py4web import DAL, Field
+db.define_table('person', Field('name'))
+db.define_table('residence', Field('address'))
+db.define_table("link", Field("person_id", "reference person"), Field("residence_id", "reference residence"))
+from py4web.util.populate import populate
+from py4web.utils.populate import populate
+populate(db.person, 10)
+populate(db.residence, 10)
+populate(db.link, 20)
+db.commit()
+print(db(db.person).select())
+print(db(db.residence).select())
+rows = db(db.person).select()
+rows[0]
+rows[1]
+db(db.link.person_id==1).select()
+print(db(db.link.person_id==1).select())
+print(db(db.residence.id.belongs([2,7,20])).select())
+print(db(db.residence.id.belongs([2,7,10])).select())
+rows = db(db.person).select()
+rows[0]
+rows[0].id
+rows[0].name
+rows[0].link
+rows[0].link.select()
+print(rows[0].link.select())
+for link in rows[0].link.select()): print(link)
+for link in rows[0].link.select(): print(link)
+for link in rows[0].link.select(): print(link.person_id, link.residence_id)
+for link in rows[0].link.select(): print(link.person_id.name, link.residence_id.name)
+for link in rows[0].link.select(): print(link.person_id.name, link.residence_id.address)
+for link in rows[0].link.select(): print(link.person_id.name, "owns", link.residence_id.address)
+print(db(db.person.id==db.link.person_id).select())
+print(db(db.person.id==db.link.person_id)(db.link.residence_id==db.residence.id).select())
+print(db(db.person.id==db.link.person_id)(db.link.residence_id==db.residence.id).select(db.person.name, db.residence.address))
+print(db(db.person.name.startswith("Lonnie"))(db.person.id==db.link.person_id)(db.link.residence_id==db.residence.id).select(db.person.name, db.residence.address))
+print(db(db.person.name.startswith("Jimmy"))(db.person.id==db.link.person_id)(db.link.residence_id==db.residence.id).select(db.person.name, db.residence.address))
+print(db(db.person.name.startswith("Allan"))(db.person.id==db.link.person_id)(db.link.residence_id==db.residence.id).select(db.person.name, db.residence.address))
+print(db(db.person.id==db.link.person_id)(db.link.residence_id==db.residence.id).select(db.person.name, db.residence.address))
+print(db(db.person.id==db.link.person_id).select(db.person.name, db.link.residence_id)
+print(db(db.person.id==db.link.person_id).select(db.person.name, db.link.residence_id))
+print(db(db.person.id==db.link.person_id).select(db.person.name, db.link..count()))
+print(db(db.person.id==db.link.person_id).select(db.person.name, db.link.count()))
+print(db(db.person.id==db.link.person_id).select(db.person.name, db.link.person_id.count()))
+print(db(db.person.id==db.link.person_id).select(db.person.name, db.link.person_id.count()),groupby=db.person.id)
+print(db(db.person.id==db.link.person_id).select(db.person.name, db.link.person_id.count(),groupby=db.person.id))
+print(db(db.person.id==db.link.person_id).select(db.person.name, db.link.person_id))
+print(db(db.person.id==db.link.person_id).select(db.person.name, db.link.person_id.count()+1,groupby=db.person.id))
+type(db)
+type(db.person)
+type(db.person.name)
+db.person.name.startswith
+db.person.name.startswith("Allan")
+type(db.person.name.startswith("Allan"))
+type(db(db.person.name.startswith("Allan")))
+db(db.person.name.startswith("Allan"))._select()
+type(db(db.person.name.startswith("Allan")).select())
+print(db(db.person.name.startswith("Allan")).select())
+for row in db(db.person.name.startswith("Allan")).select(): print(row)
+db.person.name.__eq__("Jimmy Sanders")
+db.person.name == "Jimmy Sanders"
+dir(db.person.name)
+help(db.person.name)
+db._lastsql
+db.person[2]
+db.person[2].name
+db.person[2].links.select()[0].address
+db.person[2].link.select()[0].address
+db.person[2].link
+db.person[2].link.select()
+db.person[2].link.select()[1]
+db.person[2].link.select()[1].residence
+db.person[2].link.select()[1].address
+db.person[2].link.select()[1]
+db.person[2].link.select()[0].residence_id
+db.person[2].link.select()[0].residence_id.address
+query = db.person.name == "Jimmy Sanders"
+db(query).select()
+db(query).update(name="Tom Sanders")
+db(query).delete()
+print(db(db.person).select())
+from pydal.tools.tags import Tag
+from pydal.tools.tag import Tag
+from pydal.tools.tags import Tags
+colors = Tags(db.person)
+jobs = Tags(db.person)
+colors = Tags(db.person, "color")
+jobs = Tags(db.person, "job")
+group = Tags(db.person, "group")
+group.add(1, "administrator")
+group.add(db(db.person.name=="Billy Warren").id, "administrator")
+group.add(db(db.person.name=="Billy Warren").select().first().id, "administrator")
+group.add(db.person(name="Billy Warren").id, "administrator")
+group.add(2, "administrator")
+group.add(32, "administrator")
+group.add(3, "administrator")
+group.add(2, "user")
+group.add(3, "user")
+group.add(5, "user")
+group.add(2, "dancer")
+group.add(5, "dancer")
+group.add(7, "dancer")
+group.find("dancer")
+db(group.find("dancer")).select()
+print(db(group.find("dancer")).select())
+print(db(group.find("dancer")&(db.person.name.contains("f"))).select())
+print(db(group.find("dancer")&group.find("administrator")).select())
+print(db(group.find("dancer")&group.find("user")).select())
+group.add(7, "dancer/swing")
+print(db(group.find("dancer")).select())
+print(db(group.find("dancer/swing")).select())

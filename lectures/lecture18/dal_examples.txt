@@ -1,0 +1,113 @@
+from py4web import DAL
+db = DAL("sqlite://storage1.sqlite", folder="/tmp")
+from py4web import DAL, Field
+db.define_table('person', Field('name'))
+db.define_table('residence', Field('address'))
+db.define_table("link", Field("person_id", "reference person"), Field("residence_id", "reference residence"))
+from py4web.util.populate import populate
+from py4web.utils.populate import populate
+populate(db.person, 10)
+populate(db.residence, 10)
+populate(db.link, 20)
+db.commit()
+print(db(db.person).select())
+print(db(db.residence).select())
+rows = db(db.person).select()
+rows[0]
+rows[1]
+db(db.link.person_id==1).select()
+print(db(db.link.person_id==1).select())
+print(db(db.residence.id.belongs([2,7,20])).select())
+print(db(db.residence.id.belongs([2,7,10])).select())
+rows = db(db.person).select()
+rows[0]
+rows[0].id
+rows[0].name
+rows[0].link
+rows[0].link.select()
+print(rows[0].link.select())
+for link in rows[0].link.select()): print(link)
+for link in rows[0].link.select(): print(link)
+for link in rows[0].link.select(): print(link.person_id, link.residence_id)
+for link in rows[0].link.select(): print(link.person_id.name, link.residence_id.name)
+for link in rows[0].link.select(): print(link.person_id.name, link.residence_id.address)
+for link in rows[0].link.select(): print(link.person_id.name, "owns", link.residence_id.address)
+print(db(db.person.id==db.link.person_id).select())
+print(db(db.person.id==db.link.person_id)(db.link.residence_id==db.residence.id).select())
+print(db(db.person.id==db.link.person_id)(db.link.residence_id==db.residence.id).select(db.person.name, db.residence.address))
+print(db(db.person.name.startswith("Lonnie"))(db.person.id==db.link.person_id)(db.link.residence_id==db.residence.id).select(db.person.name, db.residence.address))
+print(db(db.person.name.startswith("Jimmy"))(db.person.id==db.link.person_id)(db.link.residence_id==db.residence.id).select(db.person.name, db.residence.address))
+print(db(db.person.name.startswith("Allan"))(db.person.id==db.link.person_id)(db.link.residence_id==db.residence.id).select(db.person.name, db.residence.address))
+print(db(db.person.id==db.link.person_id)(db.link.residence_id==db.residence.id).select(db.person.name, db.residence.address))
+print(db(db.person.id==db.link.person_id).select(db.person.name, db.link.residence_id)
+print(db(db.person.id==db.link.person_id).select(db.person.name, db.link.residence_id))
+print(db(db.person.id==db.link.person_id).select(db.person.name, db.link..count()))
+print(db(db.person.id==db.link.person_id).select(db.person.name, db.link.count()))
+print(db(db.person.id==db.link.person_id).select(db.person.name, db.link.person_id.count()))
+print(db(db.person.id==db.link.person_id).select(db.person.name, db.link.person_id.count()),groupby=db.person.id)
+print(db(db.person.id==db.link.person_id).select(db.person.name, db.link.person_id.count(),groupby=db.person.id))
+print(db(db.person.id==db.link.person_id).select(db.person.name, db.link.person_id))
+print(db(db.person.id==db.link.person_id).select(db.person.name, db.link.person_id.count()+1,groupby=db.person.id))
+type(db)
+type(db.person)
+type(db.person.name)
+db.person.name.startswith
+db.person.name.startswith("Allan")
+type(db.person.name.startswith("Allan"))
+type(db(db.person.name.startswith("Allan")))
+db(db.person.name.startswith("Allan"))._select()
+type(db(db.person.name.startswith("Allan")).select())
+print(db(db.person.name.startswith("Allan")).select())
+for row in db(db.person.name.startswith("Allan")).select(): print(row)
+db.person.name.__eq__("Jimmy Sanders")
+db.person.name == "Jimmy Sanders"
+dir(db.person.name)
+help(db.person.name)
+db._lastsql
+db.person[2]
+db.person[2].name
+db.person[2].links.select()[0].address
+db.person[2].link.select()[0].address
+db.person[2].link
+db.person[2].link.select()
+db.person[2].link.select()[1]
+db.person[2].link.select()[1].residence
+db.person[2].link.select()[1].address
+db.person[2].link.select()[1]
+db.person[2].link.select()[0].residence_id
+db.person[2].link.select()[0].residence_id.address
+query = db.person.name == "Jimmy Sanders"
+db(query).select()
+db(query).update(name="Tom Sanders")
+db(query).delete()
+print(db(db.person).select())
+from pydal.tools.tags import Tag
+from pydal.tools.tag import Tag
+from pydal.tools.tags import Tags
+colors = Tags(db.person)
+jobs = Tags(db.person)
+colors = Tags(db.person, "color")
+jobs = Tags(db.person, "job")
+group = Tags(db.person, "group")
+group.add(1, "administrator")
+group.add(db(db.person.name=="Billy Warren").id, "administrator")
+group.add(db(db.person.name=="Billy Warren").select().first().id, "administrator")
+group.add(db.person(name="Billy Warren").id, "administrator")
+group.add(2, "administrator")
+group.add(32, "administrator")
+group.add(3, "administrator")
+group.add(2, "user")
+group.add(3, "user")
+group.add(5, "user")
+group.add(2, "dancer")
+group.add(5, "dancer")
+group.add(7, "dancer")
+group.find("dancer")
+db(group.find("dancer")).select()
+print(db(group.find("dancer")).select())
+print(db(group.find("dancer")&(db.person.name.contains("f"))).select())
+print(db(group.find("dancer")&group.find("administrator")).select())
+print(db(group.find("dancer")&group.find("user")).select())
+group.add(7, "dancer/swing")
+print(db(group.find("dancer")).select())
+print(db(group.find("dancer/swing")).select())

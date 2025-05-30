@@ -53,9 +53,8 @@ This class also requires familiarity with basic git commands (close, commit, pus
 - April 21 - Assignment 2 due
 - April 28 - Assignment 3 due
 - May 12 - Assignment 4 due
-- May 19 - Assignment 5 due
-- June 5 - Final project due
-- June 9 - Crowdgrader project review due
+- May 26 - Assignment 5 due
+- June 13 - Final project due
 
 IMPORTANT: The assignments that are posted are not final and can be revised by
 the instructor up to 2 weeks before they are due.
